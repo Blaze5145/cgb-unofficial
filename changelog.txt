@@ -1,8 +1,7 @@
-
+Initial Bot Commit - 24-04-2015:
 Bugs Fixed:
 1) Custom Army by barracoda.
 2) Archer text recognition by bunanan123.
-
 Mods:
 1) Advanced deployment V2 by Jgert123 
 2) Deploy Around Red Area by didipe
