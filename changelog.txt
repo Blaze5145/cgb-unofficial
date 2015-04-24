@@ -5,3 +5,4 @@ Bugs Fixed:
 Mods:
 1) Advanced deployment V2 by Jgert123 
 2) Deploy Around Red Area by didipe
+3) Red Text Recognition by blaze 
