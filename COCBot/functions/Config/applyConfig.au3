@@ -328,4 +328,8 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 
 	;location of TH, CC, Army Camp, Barrack and Spell Fact. not Applied, only read
 
+	;Upgrade Settings--------------------------------------------------------------------------
+	GUICtrlSetData($txtUpgrMinGold, $itxtUpgrMinGold)
+	GUICtrlSetData($txtUpgrMinElixir, $itxtUpgrMinElixir)
+	
 EndFunc   ;==>applyConfig

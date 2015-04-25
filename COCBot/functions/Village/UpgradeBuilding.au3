@@ -35,8 +35,8 @@ Func UpgradeIt4()
 ;
         Switch $aUpgrades[$iz][3]  ;Change action based on upgrade type!
             Case "Gold"
-                If $GoldVillage <= $aUpgrades[$iz][2] + Number(GUICtrlRead($txtWallMinGold)) then  ; Do we have enough Gold?
-                    SetLog("Insufficent Gold for #" & $iz + 1 & ", requires: " & $aUpgrades[$iz][2] & " + " & Number(GUICtrlRead($txtWallMinGold)), $COLOR_BLUE)
+                If $GoldVillage <= $aUpgrades[$iz][2] + Number(GUICtrlRead($txtUpgrMinGold)) then  ; Do we have enough Gold?
+                    SetLog("Insufficent Gold for #" & $iz + 1 & ", requires: " & $aUpgrades[$iz][2] & " + " & Number(GUICtrlRead($txtUpgrMinGold)), $COLOR_BLUE)
                     ContinueLoop
                 EndIf
                 If UpgradeNormal($iz) = False Then ContinueLoop
@@ -51,8 +51,8 @@ Func UpgradeIt4()
                 EndIf
                 ContinueLoop
             Case "Elixir"
-                If $ElixirVillage <= $aUpgrades[$iz][2] + Number(GUICtrlRead($txtWallMinElixir)) then
-                    SetLog("Insufficent Elixir for #" & $iz + 1 & ", requires: " & $aUpgrades[$iz][2]& " + " & Number(GUICtrlRead($txtWallMinElixir)), $COLOR_BLUE)
+                If $ElixirVillage <= $aUpgrades[$iz][2] + Number(GUICtrlRead($txtUpgrMinElixir)) then
+                    SetLog("Insufficent Elixir for #" & $iz + 1 & ", requires: " & $aUpgrades[$iz][2]& " + " & Number(GUICtrlRead($txtUpgrMinElixir)), $COLOR_BLUE)
                     ContinueLoop
                 EndIf
                 If UpgradeNormal($iz) = False Then ContinueLoop

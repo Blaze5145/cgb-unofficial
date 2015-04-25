@@ -913,7 +913,7 @@ $grpWalls = GUICtrlCreateGroup("Walls", $x - 20, $y - 20, 450, 120)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 Local $x = 30, $y = 280
-	$grpUpgrade = GUICtrlCreateGroup("Buildings or Hero's", $x-20, $y-15, 450, 110)
+	$grpUpgrade = GUICtrlCreateGroup("Buildings or Hero's", $x-20, $y-15, 450, 135)
 		$picUpgradeStatus[0]= GUICtrlCreatePic($hRedLight,$x-15, $y+5, 10, 10)
 			$txtTip = "Status: Red=not programmed, Yellow=programmed, not completed, Green=Completed"
 			GUICtrlSetTip(-1, $txtTip)
@@ -993,6 +993,18 @@ Local $x = 30, $y = 280
 			$txtTip = "Step #1: Locate at least 1 upgrade!"
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "btnLocateUpgrade4")
+		
+		GUICtrlCreatePic (@ScriptDir & "\Icons\Gold.jpg", $x + 220, $y + 27, 17, 17)
+		$UpgrMinGold = GUICtrlCreateLabel("Min. Gold to save:", $x + 240, $y + 30, -1, -1)
+		$txtUpgrMinGold = GUICtrlCreateInput("2500000", $x + 330, $y + 25, 61, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, "Save at least this amount of Gold in your Storages." & @CRLF & "Set this value higher if you want to upgrade other stuff.")
+			GUICtrlSetLimit(-1, 7)
+		
+		GUICtrlCreatePic (@ScriptDir & "\Icons\Elixir.jpg", $x, $y + 27, 17, 17)
+		$UpgrMinElixir = GUICtrlCreateLabel("Min. Elixir to save:", $x + 20, $y + 30, -1, -1)
+		$txtUpgrMinElixir = GUICtrlCreateInput("2500000", $x + 110, $y + 25, 61, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, "Save at least this amount of Elixir in your Storages." & @CRLF & "Set this value higher if you want to upgrade other stuff.")
+			GUICtrlSetLimit(-1, 7)
 		GUICtrlCreateGroup("", -99, -99, 1, 1);
 GUICtrlCreateTabItem("")
 

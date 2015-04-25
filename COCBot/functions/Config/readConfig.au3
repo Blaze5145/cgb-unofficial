@@ -147,6 +147,9 @@ Func readConfig() ;Reads config and sets it to the variables
 		$SFPos[0] = IniRead($config, "other", "xspellfactory", "-1")
 		$SFPos[1] = IniRead($config, "other", "yspellfactory", "-1")
 
+		;Upgrade Settings--------------------------------------------------------------------------
+		$itxtUpgrMinGold = IniRead($config, "upgrade", "minupgrgold", "0")
+		$itxtUpgrMinElixir = IniRead($config, "upgrade", "minupgrelixir", "0")
 	Else
 		Return False
 	EndIf

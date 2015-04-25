@@ -316,4 +316,8 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "other", "ySpellfactory", $SFPos[1])
 	EndIf
 
+	;Upgrade Settings--------------------------------------------------------------------------
+	IniWrite($config, "upgrade", "minupgrgold", GUICtrlRead($txtUpgrMinGold))
+	IniWrite($config, "upgrade", "minupgrelixir", GUICtrlRead($txtUpgrMinElixir))
+
 EndFunc   ;==>saveConfig
