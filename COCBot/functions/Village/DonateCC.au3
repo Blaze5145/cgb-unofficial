@@ -132,81 +132,84 @@ Func CheckDonate($string, $clanString) ;Checks if it exact
 EndFunc
 
 Func DonateBarbs()
-	If $ichkDonateBarbarians = 1 Or $ichkDonateAllBarbarians = 1 Then
-		Click($DonatePixel[0], $DonatePixel[1] + 11)
-		If _Sleep(1000) Then Return
-		_CaptureRegion(0, 0, 517, $DonatePixel[1] + 50)
-		If _ColorCheck(_GetPixelColor(237, $DonatePixel[1] - 5), Hex(0x507C00, 6), 10) Or _ColorCheck(_GetPixelColor(237, $DonatePixel[1] - 10), Hex(0x507C00, 6), 10) Then
-			SetLog("Donating Barbarians", $COLOR_GREEN)
-			If _Sleep(250) Then Return
-			Click(237, $DonatePixel[1] - 5, 5, 50)
-			$CurBarb += 5
-			$ArmyComp -= 5
-			$Donate = True
-		ElseIf $ichkDonateAllArchers = 1 Then
-			DonateArchers()
-			Return
-		Else
-			SetLog("No Barbarians available to donate..", $COLOR_RED)
-			Return
-		EndIf
-		If _Sleep(250) Then Return
-		Click(1, 1)
-		If _Sleep(250) Then Return
-	Else
-		DonateArchers()
-		Return
-	EndIf
+ If $ichkDonateBarbarians = 1 Or $ichkDonateAllBarbarians = 1 Then
+ Click($DonatePixel[0], $DonatePixel[1] + 11)
+ If _Sleep(1000) Then Return
+ _CaptureRegion(0, 0, 517, $DonatePixel[1] + 50)
+ If _ColorCheck(_GetPixelColor(237, $DonatePixel[1] - 5), Hex(0x507C00, 6), 10) Or _ColorCheck(_GetPixelColor(237, $DonatePixel[1] - 10), Hex(0x507C00, 6), 10) Then
+    $MaxDonations = GUICtrlRead($cmbMaxDonations)
+ SetLog("Donating Barbarians", $COLOR_GREEN)
+ If _Sleep(250) Then Return
+ Click(237, $DonatePixel[1] - 5, $MaxDonations, 50)
+ $CurBarb += $MaxDonations
+ $ArmyComp -= $MaxDonations
+ $Donate = True
+ ElseIf $ichkDonateAllArchers = 1 Then
+ DonateArchers()
+ Return
+ Else
+ SetLog("No Barbarians available to donate..", $COLOR_RED)
+ Return
+ EndIf
+ If _Sleep(250) Then Return
+ Click(1, 1)
+ If _Sleep(250) Then Return
+ Else
+ DonateArchers()
+ Return
+ EndIf
 EndFunc   ;==>DonateBarbs
-
+ 
 Func DonateArchers()
-	If $ichkDonateArchers = 1 Or $ichkDonateAllArchers = 1 Then
-		Click($DonatePixel[0], $DonatePixel[1] + 11)
-		If _Sleep(1000) Then Return
-		_CaptureRegion(0, 0, 517, $DonatePixel[1] + 50)
-		If _ColorCheck(_GetPixelColor(315, $DonatePixel[1] - 5), Hex(0x507C00, 6), 10) Or _ColorCheck(_GetPixelColor(315, $DonatePixel[1] - 10), Hex(0x507C00, 6), 10) Then
-			SetLog("Donating Archers", $COLOR_GREEN)
-			If _Sleep(250) Then Return
-			Click(315, $DonatePixel[1] - 5, 5, 50)
-			$CurArch += 5
-			$ArmyComp -= 5
-			$Donate = True
-		ElseIf $ichkDonateAllGiants = 1 Then
-			DonateGiants()
-			Return
-		Else
-			SetLog("No Archers available to donate..", $COLOR_RED)
-			Return
-		EndIf
-		If _Sleep(250) Then Return
-		Click(1, 1)
-		If _Sleep(250) Then Return
-	Else
-		DonateGiants()
-		Return
-	EndIf
+ If $ichkDonateArchers = 1 Or $ichkDonateAllArchers = 1 Then
+ Click($DonatePixel[0], $DonatePixel[1] + 11)
+ If _Sleep(1000) Then Return
+ _CaptureRegion(0, 0, 517, $DonatePixel[1] + 50)
+ If _ColorCheck(_GetPixelColor(315, $DonatePixel[1] - 5), Hex(0x507C00, 6), 10) Or _ColorCheck(_GetPixelColor(315, $DonatePixel[1] - 10), Hex(0x507C00, 6), 10) Then
+    $MaxDonations = GUICtrlRead($cmbMaxDonations)
+ SetLog("Donating  Archers", $COLOR_GREEN)
+ If _Sleep(250) Then Return
+ Click(315, $DonatePixel[1] - 5, $MaxDonations, 50)
+ $CurArch += $MaxDonations
+ $ArmyComp -= $MaxDonations
+ $Donate = True
+ ElseIf $ichkDonateAllGiants = 1 Then
+ DonateGiants()
+ Return
+ Else
+ SetLog("No Archers available to donate..", $COLOR_RED)
+ Return
+ EndIf
+ If _Sleep(250) Then Return
+ Click(1, 1)
+ If _Sleep(250) Then Return
+ Else
+ DonateGiants()
+ Return
+ EndIf
 EndFunc   ;==>DonateArchers
-
+ 
 Func DonateGiants()
-	If $ichkDonateGiants = 1 Or $ichkDonateAllGiants = 1 Then
-		Click($DonatePixel[0], $DonatePixel[1] + 11)
-		If _Sleep(1000) Then Return
-		_CaptureRegion(0, 0, 517, $DonatePixel[1] + 50)
-		If _ColorCheck(_GetPixelColor(397, $DonatePixel[1] - 5), Hex(0x507C00, 6), 10) Or _ColorCheck(_GetPixelColor(480, $DonatePixel[1] - 10), Hex(0x507C00, 6), 10) Then  ; quick fix by promac from gamebot.org
-			SetLog("Donating Giants", $COLOR_GREEN)
-			If _Sleep(250) = True Then Return
-			Click(397, $DonatePixel[1] - 5, 5, 50)
-			$CurGiant += 5
-			$ArmyComp -= 25
-			$Donate = True
-		Else
-			SetLog("No Giants available to donate..", $COLOR_RED)
-		EndIf
-		If _Sleep(250) Then Return
-		Click(1, 1)
-		If _Sleep(250) Then Return
-	Else
-		SetLog("No troops available to donate..", $COLOR_RED)
-		If _Sleep(250) Then Return
-	EndIf
+ If $ichkDonateGiants = 1 Or $ichkDonateAllGiants = 1 Then
+ Click($DonatePixel[0], $DonatePixel[1] + 11)
+ If _Sleep(1000) Then Return
+ _CaptureRegion(0, 0, 517, $DonatePixel[1] + 50)
+ If _ColorCheck(_GetPixelColor(397, $DonatePixel[1] - 5), Hex(0x507C00, 6), 10) Or _ColorCheck(_GetPixelColor(480, $DonatePixel[1] - 10), Hex(0x507C00, 6), 10) Then  ; quick fix by promac from gamebot.org
+    $MaxDonations = GUICtrlRead($cmbMaxDonations)
+ SetLog("Donating Giants", $COLOR_GREEN)
+ If _Sleep(250) = True Then Return
+ Click(397, $DonatePixel[1] - 5, $MaxDonations, 50)
+ $CurGiant += $MaxDonations
+ $ArmyComp -= $MaxDonations * 5
+ $Donate = True
+ Else
+ SetLog("No Giants available to donate..", $COLOR_RED)
+ EndIf
+ If _Sleep(250) Then Return
+ Click(1, 1)
+ If _Sleep(250) Then Return
+ Else
+ SetLog("No troops available to donate..", $COLOR_RED)
+ If _Sleep(250) Then Return
+ EndIf
 EndFunc   ;==>DonateGiants

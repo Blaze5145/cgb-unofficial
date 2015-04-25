@@ -81,6 +81,8 @@ Func readConfig() ;Reads config and sets it to the variables
 		;hit de with lightning spell
 
 		;Donate Settings-------------------------------------------------------------------------
+		$icmbMaxDonations = IniRead($config, "donate", "MaxDonations", "0")
+
 		$ichkRequest = IniRead($config, "donate", "chkRequest", "0")
 		$itxtRequest = IniRead($config, "donate", "txtRequest", "")
 

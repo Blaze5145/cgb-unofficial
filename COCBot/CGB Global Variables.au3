@@ -193,6 +193,7 @@ Global $F[8] = [112, 58, 47, 47, 119, 119, 119, 46]
 Global $ichkDonateAllGiants = 0
 Global $ichkDonateGiants = 0
 Global $itxtDonateGiants = ""
+Global $MaxDonations,$icmbMaxDonations  ;determines the no of troops to be donated
 
 ;Troop Settings
 Global $icmbTroopComp ;Troop Composition

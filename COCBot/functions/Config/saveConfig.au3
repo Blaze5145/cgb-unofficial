@@ -190,6 +190,8 @@ Func saveConfig() ;Saves the controls settings to the config
 	;hit de with lightning spell
 
 	;Donate Settings-------------------------------------------------------------------------
+	IniWrite($config, "donate", "MaxDonations", _GUICtrlComboBox_GetCurSel($cmbMaxDonations))
+
 	If GUICtrlRead($chkRequest) = $GUI_CHECKED Then
 		IniWrite($config, "donate", "chkRequest", 1)
 	Else

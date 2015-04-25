@@ -202,6 +202,8 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	;hit de with lightning spell
 
 	;Donate Settings-------------------------------------------------------------------------
+	_GUICtrlComboBox_SetCurSel($cmbMaxDonations, $icmbMaxDonations)
+
 	If $ichkRequest = 1 Then
 		GUICtrlSetState($chkRequest, $GUI_CHECKED)
 	Else
