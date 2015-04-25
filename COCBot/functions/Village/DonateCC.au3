@@ -112,6 +112,48 @@ Func DonateCC($Check = False)
 		Click(331, 330) ;Clicks chat thing
 	    If _Sleep(250) Then Return
 	EndIf
+
+	If GUICtrlRead($gtfo) = 1 Then
+		Local $scroll, $kick_y, $kicked = 0
+		While 1
+		Click($CCPos[0], $CCPos[1]) ; click clan castle
+		If _Sleep(500) Then Return
+		Click(530, 600) ; open clan page
+		If _Sleep(5000) Then Return ; wait for it to load
+		$scroll = 0
+		While 1
+		_CaptureRegion(190, 80, 220, 650)
+		If _Sleep(1000) Then ExitLoop
+			Local $new = _PixelSearch(200, 80, 210, 650, Hex(0xE73838, 6), 20) ; search for red New words
+		If IsArray($new) Then
+			SetLog("x:" & $new[0] & " y:" & $new[1], $COLOR_RED) ; debuggin purpose
+		Click($new[0], $new[1]) ; click the New member
+		If _Sleep(500) Then ExitLoop
+		If $new[1]+80> 640 Then
+		$kick_y = 640 ;if the kick button is over bluestack boundary, limit it to the bottom
+	Else
+		$kick_y = $new[1] + 80 ; else just use it
+	EndIf
+	Click($new[0] + 300, $kick_y) ; click kick button, hopefully
+	If _Sleep(500) Then ExitLoop
+	Click(520, 240) ; click Send button
+	If _Sleep(500) Then ExitLoop
+	$kicked += 1
+	SetLog($kicked & " Kicked!", $COLOR_RED)
+	If _Sleep(2000) Then ExitLoop
+	ExitLoop
+	Else
+	ControlSend($Title, "", "", "{CTRLDOWN}{UP}{CTRLUP}") ; scroll down the member list
+	SetLog("Scrolling down " & $scroll, $COLOR_RED)
+	$scroll += 1
+	If _Sleep(3000) Then ExitLoop
+	EndIf
+	If $scroll = 8 Then ExitLoop(2) ; quit the loop if cannot find any New member after scrolling 8 times
+	WEnd
+	WEnd
+	EndIf
+	SetLog("Finished kicking", $COLOR_RED)
+	ClickP($TopLeftClient)
 EndFunc   ;==>DonateCC
 
 Func CheckDonate($string, $clanString) ;Checks if it exact

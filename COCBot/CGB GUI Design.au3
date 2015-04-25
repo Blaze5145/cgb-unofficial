@@ -526,20 +526,22 @@ GUICtrlCreateTabItem("")
 ;~ -------------------------------------------------------------
 $tabDonate = GUICtrlCreateTabItem("  Donate  ")
 	Local $x = 30, $y = 160
-	$grpDonation = GUICtrlCreateGroup("Clan Castle", $x - 20, $y - 20, 450, 50)
+	$grpDonation = GUICtrlCreateGroup("Clan Castle", $x - 20, $y - 20, 450, 55)
 		GUICtrlCreatePic (@ScriptDir & "\Icons\ClanCastle.jpg", $x - 14, $y - 5, 29, 29)
 		$chkRequest = GUICtrlCreateCheckbox("Request for:", $x + 19, $y, -1, -1)
 			GUICtrlSetOnEvent(-1, "chkRequest")
 		$txtRequest = GUICtrlCreateInput("Anything please", $x + 98, $y, 202, -1)
 			GUICtrlSetTip(-1, "This text is used on your request for troops in the Clan chat.")
-		$lblMaxDonations = GUICtrlCreatelabel("Max Donations:", $x + 305, $y+4, -1, -1)
+		$gtfo = GUICtrlCreateCheckbox("GTFO", $x + 305, $y-10, 50, 17) 
+			GUICtrlSetTip(-1, "Kick after donating") 
+		$lblMaxDonations = GUICtrlCreatelabel("Max Donations:", $x + 305, $y+14, -1, -1)
 			GUICtrlSetTip(-1, "This will decide the no : of troops to be donated.")
-		$cmbMaxDonations = GUICtrlCreateCombo("", $x + 382, $y, 40, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+		$cmbMaxDonations = GUICtrlCreateCombo("", $x + 382, $y+8, 40, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, "This will decide the no : of troops to be donated.")
 			GUICtrlSetData(-1, "5|6|8", "5")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	$y += 55
+	$y += 60
 	$grpBarbarians = GUICtrlCreateGroup("Barbarians", $x - 20, $y - 20, 150, 290)
 		GUICtrlCreatePic (@ScriptDir & "\Icons\Barbarian_D.jpg", $x - 12, $y, 30, 40)
 				$chkDonateBarbarians = GUICtrlCreateCheckbox("Donate Barbarians", $x + 20, $y, -1, -1)
