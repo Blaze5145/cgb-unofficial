@@ -188,6 +188,8 @@ If SearchTownHallLoc() AND GUICtrlRead($chkAttackTH)=$GUI_CHECKED Then
 			   AttackTHNormal();Good for Masters
 		 Case 2
 			   AttackTHXtreme();Good for Champ
+     Case 3
+         AttackTHgbarch();Good for Champ also
 			EndSwitch
 
 		  Local $iErrorTime = 30000 ; Set to exit star check loop if no win 30 seconds after troop deployment
