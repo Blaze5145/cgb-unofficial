@@ -1,7 +1,20 @@
+25-04-2015:
+Bugs Fixed:
+1) Attack wait by knowjack
+2) Undefined global variables by knowjack
+3) Check for COC has stopped by knowjack
+4) Lag issue by knowjack	
+
+Mods:
+1) Reverted Blaze's Red Text Recognition
+2) Added LazyMan Mod V2
+
 Initial Bot Commit - 24-04-2015:
+
 Bugs Fixed:
 1) Custom Army by barracoda.
 2) Archer text recognition by bunanan123.
+
 Mods:
 1) Advanced deployment V2 by Jgert123 
 2) Deploy Around Red Area by didipe
