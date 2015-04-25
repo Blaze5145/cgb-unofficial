@@ -10,6 +10,7 @@ Mods:
 3) Increase Maximum Donations with Clan Level by cocmady
 4) Pushbullet v2.0 by Boju
 5) TH Snipe by barracoda
+6) Kick after donate by scarface008
 
 Initial Bot Commit - 24-04-2015:
 Bugs Fixed:
