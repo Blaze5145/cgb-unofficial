@@ -85,3 +85,6 @@
 
 #include "functions\Village\LocateSpell.au3"
 #include "functions\Village\Spell.au3"
+
+#include "functions\Village\LocateUpgrade.au3"
+#include "functions\Village\UpgradeBuilding.au3"

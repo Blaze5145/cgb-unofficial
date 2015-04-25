@@ -158,7 +158,7 @@ Global $iradAttackMode ;Attack mode, 0 1 2
 Global $THLoc
 Global $chkATH
 
-Global $King, $Queen, $CC
+Global $King, $Queen, $CC, $Barb, $Arch
 Global $LeftTHx, $RightTHx, $BottomTHy, $TopTHy
 Global $AtkTroopTH
 Global $GetTHLoc
@@ -289,3 +289,23 @@ Global $PixelRedArea[4]
 Global $hBitmapFirst
 Global Enum $eVectorLeftTop, $eVectorRightTop, $eVectorLeftBottom, $eVectorRightBottom
 Global $debugRedArea=0
+
+; this stores the location of the image to check for when CoC has stopped
+Global $hCocStopped = @ScriptDir & "\images\CocStopped.bmp"
+
+; this stores the location of the bldg to be upgraded and some new images for the GUI
+Global $aUpgrades[4][4] = [[-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""]] ;Store upgrade position x&y, value, and loot type
+
+Global $picUpgradeStatus[4] ;Add indexable array variables for accessing the Upgrades GUI
+Global $picUpgradeType[4]
+Global $txtUpgradeX[4]
+Global $txtUpgradeY[4]
+Global $chkbxUpgrade[4]
+
+Global $hRedLight = @ScriptDir & "\Icons\Red.bmp"  ; Add handles for GUI images
+Global $hGreenLight = @ScriptDir & "\Icons\Green.bmp"
+Global $hYellowLight = @ScriptDir & "\Icons\Yellow.bmp"
+Global $hUpTypeGold = @ScriptDir & "\Icons\Gold.bmp"
+Global $hUpTypeElixir = @ScriptDir & "\Icons\Elixir.bmp"
+Global $hUpTypeDark = @ScriptDir & "\Icons\Dark.bmp"
+Global $hUpTypeBlank = @ScriptDir & "\Icons\Blank.bmp"

@@ -94,11 +94,11 @@ Func btnStart()
 
 				$RunState = True
 				For $i = $FirstControlToHide To $LastControlToHide ; Save state of all controls on tabs
-					If $i = $tabGeneral or $i = $tabSearch or $i = $tabAttack or $i = $tabAttackAdv or $i = $tabDonate or $i = $tabTroops or $i = $tabMisc then $i += 1 ; exclude tabs
+					If $i = $tabGeneral or $i = $tabSearch or $i = $tabAttack or $i = $tabAttackAdv or $i = $tabDonate or $i = $tabTroops or $i = $tabMisc or $i = $tabUpgrades then $i += 1 ; exclude tabs
 					$iPrevState[$i] = GUICtrlGetState($i)
 				Next
 				For $i = $FirstControlToHide To $LastControlToHide ; Disable all controls in 1 go on all tabs
-					If $i = $tabGeneral or $i = $tabSearch or $i = $tabAttack or $i = $tabAttackAdv or $i = $tabDonate or $i = $tabTroops or $i = $tabMisc then $i += 1 ; exclude tabs
+					If $i = $tabGeneral or $i = $tabSearch or $i = $tabAttack or $i = $tabAttackAdv or $i = $tabDonate or $i = $tabTroops or $i = $tabMisc or $i = $tabUpgrades then $i += 1 ; exclude tabs
 					GUICtrlSetState($i, $GUI_DISABLE)
 				Next
 
@@ -128,7 +128,7 @@ EndFunc   ;==>btnStart
 		EnableBS($HWnD, $SC_MINIMIZE)
 		EnableBS($HWnD, $SC_CLOSE)
 		For $i = $FirstControlToHide To $LastControlToHide ; Restore previous state of controls
-			If $i = $tabGeneral or $i = $tabSearch or $i = $tabAttack or $i = $tabAttackAdv or $i = $tabDonate or $i = $tabTroops or $i = $tabMisc then $i += 1 ; exclude tabs
+			If $i = $tabGeneral or $i = $tabSearch or $i = $tabAttack or $i = $tabAttackAdv or $i = $tabDonate or $i = $tabTroops or $i = $tabMisc or $i = $tabUpgrades then $i += 1 ; exclude tabs
 			GUICtrlSetState($i, $iPrevState[$i])
 		Next
 
@@ -162,6 +162,73 @@ Func Check()
 	Check()
 	EndIf
 EndFunc
+
+Func btnLocateUpgrade1()
+	$RunState = True
+	While 1
+	  LocateOneUpgrade(0)
+	  ExitLoop
+	WEnd
+	$RunState = False
+EndFunc   ;==>btnLocateUpgrade1
+
+Func btnLocateUpgrade2()
+	$RunState = True
+	While 1
+	  LocateOneUpgrade(1)
+	  ExitLoop
+	WEnd
+	$RunState = False
+ EndFunc   ;==>btnLocateUpgrade2
+
+ Func btnLocateUpgrade3()
+	$RunState = True
+	While 1
+	  LocateOneUpgrade(2)
+	  ExitLoop
+	WEnd
+	$RunState = False
+ EndFunc   ;==>btnLocateUpgrade3
+
+ Func btnLocateUpgrade4()
+	$RunState = True
+	While 1
+	  LocateOneUpgrade(3)
+	  ExitLoop
+	WEnd
+	$RunState = False
+ EndFunc   ;==>btnLocateUpgrade4
+
+Func btnCheckUpgrade()    ; Valdiate and determine the cost and type of the upgrade and change GUI boxes/pics to match
+	$RunState = True
+	While 1
+		ZoomOut()
+		CheckUpgrades()
+		ExitLoop
+	WEnd
+	$RunState = False
+EndFunc
+
+Func btnResetUpgrade()
+	$RunState = True
+	While 1
+	; Reset Condition $aUpgrades[4][4] = [[-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""], [-1, -1, -1, ""]]
+	  For $i = 0 to 3
+		 $aUpgrades[$i][3] = "" ;Clear Upgrade Type
+		 GUICtrlSetData($txtUpgradeX[$i], "")  ; Clear GUI X position
+		 GUICtrlSetData($txtUpgradeY[$i], "")  ; Clear GUI Y position
+		 GUICtrlSetImage($picUpgradeType[$i], $hUpTypeBlank) ; change GUI upgrade image to blank
+		 GUICtrlSetImage($picUpgradeStatus[$i], $hRedLight)  ; Change GUI upgrade status to not ready
+		 GUISetState($chkbxUpgrade[$i],$GUI_UNCHECKED) ; Change upgrade selection box to unchecked
+		 For $j = 0 to 2
+			$aUpgrades[$i][$j] = -1   ; clear location and loot value in $aUpgrades variable
+		 Next
+	  Next
+	  GUISetState()
+	  ExitLoop
+	WEnd
+	$RunState = False
+EndFunc   ;==>btnResetUpgrade
 
 Func btnLocateBarracks()
 	While 1

@@ -1,8 +1,16 @@
-Func VillageReport()
+Func VillageReport($bBypass=False)
+;	LAZYMANV2 MOD added boolean $bypass to avoid changing statistics and make log message more clear
 	ClickP($TopLeftClient) ;Click Away
 	If _Sleep(500) Then Return
 
-	SetLog("Village Report", $COLOR_BLUE)
+	Switch $bBypass
+	Case False
+		SetLog("Village Report", $COLOR_BLUE)
+	Case True
+		SetLog("Updating Village Resource Values", $COLOR_BLUE)
+	Case Else
+		SetLog("Village Report Error, You have been a BAD programmer!", $COLOR_RED)
+	EndSwitch
 
 	$FreeBuilder = GetOther(324, 23, "Builder")
 	$TotalBuilders = GetOther(345, 23, "Builder")
@@ -34,23 +42,23 @@ Func VillageReport()
 
 	Click(820, 40) ; Close Builder/Shop
 
-	; update stats
-	Switch $FirstAttack
-		Case 2
-			ReportLastTotal()
-			ReportCurrent()
-		Case 1
-			GUICtrlSetState($lblLastAttackTemp, $GUI_HIDE)
-			GUICtrlSetState($lblTotalLootTemp, $GUI_HIDE)
-			ReportLastTotal()
-			ReportCurrent()
-			$FirstAttack = 2
-		Case 0
-			ReportStart()
-			ReportCurrent()
-			$FirstAttack = 1
-	EndSwitch
-
+	If $bBypass = False then ; update stats
+		Switch $FirstAttack
+			Case 2
+				ReportLastTotal()
+				ReportCurrent()
+			Case 1
+				GUICtrlSetState($lblLastAttackTemp, $GUI_HIDE)
+				GUICtrlSetState($lblTotalLootTemp, $GUI_HIDE)
+				ReportLastTotal()
+				ReportCurrent()
+				$FirstAttack = 2
+			Case 0
+				ReportStart()
+				ReportCurrent()
+				$FirstAttack = 1
+		EndSwitch
+	EndIf
 	_CaptureRegion()
 	Local $i = 0
 	While _ColorCheck(_GetPixelColor(819, 39), Hex(0xF8FCFF, 6), 20) = True ; wait for Builder/shop to close

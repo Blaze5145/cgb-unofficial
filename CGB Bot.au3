@@ -123,6 +123,10 @@ Func runBot() ;Bot that runs everything in order
 				If _Sleep(1000) Then Return
 				checkMainScreen(False)
 				If $Restart = True Then ContinueLoop
+			UpgradeIt4()
+			   If _Sleep(1000) Then Return
+				checkMainScreen(False)
+				If $Restart = True Then ContinueLoop
 			UpgradeWall()
 				If _Sleep(1000) Then Return
 				checkMainScreen(False)

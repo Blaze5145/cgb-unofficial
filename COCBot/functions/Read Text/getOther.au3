@@ -110,23 +110,46 @@ Func getOther($x_start, $y_start, $type, $totalcamp = false)
             $Number &= getDigit($x, $y, "Other")
             $Number &= getDigit($x, $y, "Other")
             $Number &= getDigit($x, $y, "Other")
-        Case "UpgRed"
-           $Number = getDigit($x, $y, "ResourceUpgRed")
+        Case "Upgrades"  ; Case added by LAZYMANV2 MOD to read white text in upgrade screens.
+            $Number = getDigit($x, $y, "Resource")
 
-           While $Number = ""
-               If $i >= 95 Then ExitLoop ; 90px to 7 digits
-               $i += 1
-               $x += 1
-               $Number = getDigit($x, $y, "ResourceUpgRed")
-           WEnd
+            While $Number = ""
+                If $i >= 120 Then ExitLoop
+                $i += 1
+                $x += 1
+                $Number = getDigit($x, $y, "Resource")
+            WEnd
 
-           $Number &= getDigit($x, $y, "ResourceUpgRed")
-           $Number &= getDigit($x, $y, "ResourceUpgRed")
-           $Number &= getDigit($x, $y, "ResourceUpgRed")
-           $Number &= getDigit($x, $y, "ResourceUpgRed")
-           $Number &= getDigit($x, $y, "ResourceUpgRed")
-           $Number &= getDigit($x, $y, "ResourceUpgRed")
-           $Number &= getDigit($x, $y, "ResourceUpgRed")
+            $Number &= getDigit($x, $y, "Resource")
+            $Number &= getDigit($x, $y, "Resource")
+            $Number &= getDigit($x, $y, "Resource")
+            $Number &= getDigit($x, $y, "Resource")
+            $Number &= getDigit($x, $y, "Resource")
+            $Number &= getDigit($x, $y, "Resource")
+            $Number &= getDigit($x, $y, "Resource")
+            $Number &= getDigit($x, $y, "Resource")
+            $Number &= getDigit($x, $y, "Resource")
+
+       Case "RedUpgrades"  ; Case added by LAZYMANV2 MOD to read red text in upgrade screens.
+
+            $Number = getDigit($x, $y, "RedUpgrades")
+
+            While $Number = ""
+                If $i >= 120 Then ExitLoop
+                $i += 1
+                $x += 1
+                $Number = getDigit($x, $y, "RedUpgrades")
+            WEnd
+
+            $Number &= getDigit($x, $y, "RedUpgrades")
+            $Number &= getDigit($x, $y, "RedUpgrades")
+            $Number &= getDigit($x, $y, "RedUpgrades")
+            $Number &= getDigit($x, $y, "RedUpgrades")
+            $Number &= getDigit($x, $y, "RedUpgrades")
+            $Number &= getDigit($x, $y, "RedUpgrades")
+            $Number &= getDigit($x, $y, "RedUpgrades")
+            $Number &= getDigit($x, $y, "RedUpgrades")
+            $Number &= getDigit($x, $y, "RedUpgrades")
     EndSwitch
 
     Return $Number

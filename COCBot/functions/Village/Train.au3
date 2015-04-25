@@ -51,7 +51,7 @@ Func Train()
 		If _Sleep(2000) Then Return
 	EndIf
 
-	SetLog("Training Troops...", $COLOR_BLUE)
+	SetLog("(IsOdd MOD)Training Troops...", $COLOR_BLUE)
 
 	If _Sleep(100) Then Return
 
@@ -272,6 +272,21 @@ Func Train()
 			  endif
 		   Endif
 
+		   If IsOdd($brrNum+1) = True Then
+			  If GUICtrlRead($txtBarbarians) <> "0" And $CurBarb > 0 Then
+			   ;If _ColorCheck(_GetPixelColor(369, 366), Hex(0x39D8E0, 6), 20) And $CurBarb > 0 Then
+				  If $CurBarb > 0  Then
+					  if $BarbEBarrack = 0 then
+						   TrainIt($eBarbarian, 1)
+					   elseif $BarbEBarrack >= $CurBarb or $BarbEBarrack = 0  then
+						  TrainIt($eBarbarian, $CurBarb)
+					  else
+						  TrainIt($eBarbarian, $BarbEBarrack)
+					  endif
+				  EndIf
+			   EndIf
+			EndIf
+
 		   If GUICtrlRead($txtArchers) <> "0" And $CurArch > 0 Then
 			   ;If _ColorCheck(_GetPixelColor(261, 366), Hex(0x39D8E0, 6), 20) And $CurArch > 0 Then
 			   If $CurArch > 0  Then
@@ -285,6 +300,21 @@ Func Train()
 			   EndIf
 		   EndIf
 
+		   If IsOdd($brrNum+1)= False Then
+			  If GUICtrlRead($txtBarbarians) <> "0" And $CurBarb > 0 Then
+			   ;If _ColorCheck(_GetPixelColor(369, 366), Hex(0x39D8E0, 6), 20) And $CurBarb > 0 Then
+				  If $CurBarb > 0  Then
+					  if $BarbEBarrack = 0 then
+						   TrainIt($eBarbarian, 1)
+					   elseif $BarbEBarrack >= $CurBarb or $BarbEBarrack = 0  then
+						  TrainIt($eBarbarian, $CurBarb)
+					  else
+						  TrainIt($eBarbarian, $BarbEBarrack)
+					  endif
+				  EndIf
+			   EndIf
+			EndIf
+
 		   If GUICtrlRead($txtNumGiants) <> "0" And $CurGiant > 0 Then
 			   ;If _ColorCheck(_GetPixelColor(475, 366), Hex(0x3DD8E0, 6), 20) And $CurGiant > 0 Then
 			   If $CurGiant > 0 Then
@@ -297,7 +327,7 @@ Func Train()
 				   endif
 			   endif
 		   EndIf
-		   
+
 		   If GUICtrlRead($txtNumWizards) <> "0" And $CurWizard > 0 Then
 			   If $CurWizard > 0 Then
 				   if $WizardEBarrack = 0 then
@@ -309,36 +339,6 @@ Func Train()
 				   endif
 			   endif
 		   EndIf
-
-
-		   If GUICtrlRead($txtNumWallbreakers) <> "0" And $CurWB > 0 Then
-			   ;If _ColorCheck(_GetPixelColor(688, 366), Hex(0x3AD8E0, 6), 20) And $CurWB > 0  Then
-			   If $CurWB > 0  Then
-				   if $WallEBarrack = 0 then
-					    TrainIt($eWallbreaker, 1)
-					elseif $WallEBarrack >= $CurWB or $WallEBarrack = 0  then
-					   TrainIt($eWallbreaker, $CurWB)
-				   else
-					   TrainIt($eWallbreaker, $WallEBarrack)
-				   endif
-			   EndIf
-		   EndIf
-
-
-		   If GUICtrlRead($txtBarbarians) <> "0" And $CurBarb > 0 Then
-			   ;If _ColorCheck(_GetPixelColor(369, 366), Hex(0x39D8E0, 6), 20) And $CurBarb > 0 Then
-			   If $CurBarb > 0  Then
-				   if $BarbEBarrack = 0 then
-					    TrainIt($eBarbarian, 1)
-					elseif $BarbEBarrack >= $CurBarb or $BarbEBarrack = 0  then
-					   TrainIt($eBarbarian, $CurBarb)
-				   else
-					   TrainIt($eBarbarian, $BarbEBarrack)
-				   endif
-			   EndIf
-		   EndIf
-
-
 
 		   If GUICtrlRead($txtGoblins) <> "0" And $CurGoblin > 0 Then
 			   ;If _ColorCheck(_GetPixelColor(261, 366), Hex(0x39D8E0, 6), 20) And $CurGoblin > 0 Then
@@ -659,3 +659,11 @@ Func checkArmyCamp()
 	 EndIf
 
 Endfunc
+
+Func IsOdd($inum)
+    if (Mod($inum, 2) >= 1)  Then
+        return True
+    Else
+        return False
+    EndIf
+EndFunc

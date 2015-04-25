@@ -24,6 +24,13 @@ Func checkObstacles() ;Checks if something is in the way for mainscreen
         Click(416, 399);Check for "Take a break" message
         Return True
 	 EndIf
+	If _ImageSearchArea($hCocStopped, 0, 250, 328, 618, 402, $x, $y, 70) Then
+		SetLog("CoC Has Stopped Error .....", $COLOR_RED)
+		If _Sleep(1000) Then Return
+		  Click(250+$x, 328+$y);Check for "CoC has stopped error, looking for OK message" on screen
+		Return True
+	 EndIf
+
 	$Message = _PixelSearch(457, 300, 458, 330, Hex(0x33B5E5, 6), 10)
 	If IsArray($Message) Then
 		Click(416, 399);Check for out of sync or inactivity

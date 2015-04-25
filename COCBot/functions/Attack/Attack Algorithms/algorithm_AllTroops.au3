@@ -190,11 +190,13 @@ If SearchTownHallLoc() AND GUICtrlRead($chkAttackTH)=$GUI_CHECKED Then
 			   AttackTHXtreme();Good for Champ
 			EndSwitch
 
-		 While 1
-			 _CaptureRegion()
-			If _ColorCheck(_GetPixelColor(746,498), Hex(0x0E1306, 6), 20)=False Then ExitLoop ;exit if not 'no star'
-			   _Sleep(1000)
-		 WEnd
+		  Local $iErrorTime = 30000 ; Set to exit star check loop if no win 30 seconds after troop deployment
+          Local $iBegin = TimerInit()
+          Do
+            _CaptureRegion()
+            If _ColorCheck(_GetPixelColor(746,498), Hex(0x0E1306, 6), 20)=False Then ExitLoop ;exit if not 'no star'
+            _Sleep(5000)
+          Until TimerDiff($iBegin) >= $iErrorTime
 
  		 If $OptBullyMode=0  And $OptTrophyMode=1 And SearchTownHallLoc() Then; Return ;Exit attacking if trophy hunting and not bullymode
 			Click(62, 519) ;Click Surrender
