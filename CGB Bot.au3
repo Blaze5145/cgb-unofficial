@@ -98,6 +98,7 @@ Func runBot() ;Bot that runs everything in order
 				checkMainScreen(False)
 				If $Restart = True Then ContinueLoop
 			VillageReport()
+				_Push("Stats You :", "Start [G]: " & $GoldStart & " [E]: " & $ElixirStart & " [D]: " & $DarkStart & "  Now [G]: " & $GoldVillage & " [E]: " & $ElixirVillage & " [D]: " & $DarkVillage & " Start [T]: " & $TrophyStart & " Now [T]: " & $TrophyVillage & " [GEM]: " & $GemCount & " [No. of Free Builders]: " & $FreeBuilder & " [No. of Wall Up]: G:" & $wallgoldmake & "/E:" & $wallelixirmake)
 				If _Sleep(1000) Then Return
 				checkMainScreen(False)
 				If $Restart = True Then ContinueLoop
