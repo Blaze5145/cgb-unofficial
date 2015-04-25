@@ -1,8 +1,4 @@
-Increase Max Donations Mod - 25-04-2015
-Mods:
-1) Increase Maximum Donations with Clan Level by cocmady
-
-LazyMan Mod v2 - 25-04-2015:
+25-04-2015:
 Bugs Fixed:
 1) Attack wait by knowjack
 2) Undefined global variables by knowjack
@@ -10,7 +6,10 @@ Bugs Fixed:
 4) Lag issue by knowjack
 Mods:
 1) Reverted Blaze's Red Text Recognition
-2) Added LazyMan Mod V2
+2) Added LazyMan Mod V2 with extension
+3) Increase Maximum Donations with Clan Level by cocmady
+4) Pushbullet v2.0 by Boju
+5) TH Snipe by barracoda
 
 Initial Bot Commit - 24-04-2015:
 Bugs Fixed:
