@@ -231,6 +231,7 @@ Func btnResetUpgrade()
 EndFunc   ;==>btnResetUpgrade
 
 Func btnLocateBarracks()
+   $RunState = True
 	While 1
 		ZoomOut()
 		LocateBarrack()
