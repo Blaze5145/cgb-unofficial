@@ -339,7 +339,21 @@ Func Train()
 				   endif
 			   endif
 		   EndIf
+		   
 
+		   If GUICtrlRead($txtNumWallbreakers) <> "0" And $CurWB > 0 Then
+			   ;If _ColorCheck(_GetPixelColor(688, 366), Hex(0x3AD8E0, 6), 20) And $CurWB > 0  Then
+			   If $CurWB > 0  Then
+				   if $WallEBarrack = 0 then
+					    TrainIt($eWallbreaker, 1)
+					elseif $WallEBarrack >= $CurWB or $WallEBarrack = 0  then
+					   TrainIt($eWallbreaker, $CurWB)
+				   else
+					   TrainIt($eWallbreaker, $WallEBarrack)
+				   endif
+			   EndIf
+		   EndIf
+		   
 		   If GUICtrlRead($txtGoblins) <> "0" And $CurGoblin > 0 Then
 			   ;If _ColorCheck(_GetPixelColor(261, 366), Hex(0x39D8E0, 6), 20) And $CurGoblin > 0 Then
 			   If $CurGoblin > 0  Then
