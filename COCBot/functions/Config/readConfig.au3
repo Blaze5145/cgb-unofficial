@@ -71,6 +71,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$OptBullyMode = IniRead($config, "advanced", "BullyMode", "0")
 		$ATBullyMode = IniRead($config, "advanced", "ATBullyMode", "0")
 		$YourTH = IniRead($config, "advanced", "YourTH", "0")
+		$GoldorElixirTHB = IniRead($config, "advanced", "searchG/E4THB", "150000")
 
 		$OptTrophyMode = IniRead($config, "advanced", "TrophyMode", "0")
 		$THaddtiles = IniRead($config, "advanced", "THaddTiles", "0")
