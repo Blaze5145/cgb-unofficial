@@ -28,7 +28,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 			Local $Time = @HOUR & "-" & @MIN
 			_CaptureRegion()
 			$hBitmap_Scaled = _GDIPlus_ImageResize($hBitmap, _GDIPlus_ImageGetWidth($hBitmap) / 2, _GDIPlus_ImageGetHeight($hBitmap) / 2) ;resize image
-			_GDIPlus_ImageSaveToFile($hBitmap_Scaled, $dirLoots & $Date & "_" & $Time & ".jpg")
+			_GDIPlus_ImageSaveToFile($hBitmap_Scaled, $dirLoots & $Date & "_" & $Time & "_" & StringFormat("%3s", $SearchCount) & ".jpg")
 			;attackReport()
 		EndIf
 
