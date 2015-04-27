@@ -172,7 +172,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "advanced", "BullyMode", 0)
 	EndIf
-
+        IniWrite($config, "advanced", "searchG/E4THB", GUICtrlRead($txtGoldorElixirTHB))
 	IniWrite($config, "advanced", "ATBullyMode", GUICtrlRead($txtATBullyMode))
 	IniWrite($config, "advanced", "YourTH", _GUICtrlComboBox_GetCurSel($cmbYourTH))
 

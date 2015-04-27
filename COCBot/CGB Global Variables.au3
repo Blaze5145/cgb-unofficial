@@ -91,7 +91,7 @@ Global $CostGoldWall, $CostElixirWall
 Global $Is_ClientSyncError = False ;If true means while searching Client Out Of Sync error occurred.
 Global $searchGold, $searchElixir, $searchDark, $searchTrophy, $searchTH ;Resources of bases when searching
 Global $SearchGold2=0, $SearchElixir2=0, $iStuck=0, $iNext=0
-Global $MinGold, $MinElixir, $MinDark, $MinTrophy, $MaxTH ; Minimum Resources conditions
+Global $MinGold, $MinElixir, $MinDark, $MinTrophy, $MaxTH , $GoldorElixirTHB; Minimum Resources conditions
 Global $AimGold, $AimElixir, $AimDark, $AimTrophy, $AimTHtext ; Aiming Resource values
 Global $iChkSearchReduction
 Global $ReduceCount, $ReduceGold, $ReduceElixir, $ReduceDark, $ReduceTrophy ; Reducing values

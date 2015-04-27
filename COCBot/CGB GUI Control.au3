@@ -740,6 +740,7 @@ Func chkBullyMode()
 		$OptBullyMode = 1
 		GUICtrlSetState($txtATBullyMode, $GUI_ENABLE)
 		GUICtrlSetState($cmbYourTH, $GUI_ENABLE)
+		GUICtrlSetState($txtGoldorElixirTHB, $GUI_ENABLE)
 	Else
 		$OptBullyMode = 0
 		GUICtrlSetState($txtATBullyMode, $GUI_DISABLE)
