@@ -39,6 +39,7 @@ Global $TrainGoblin[4]  = [ 581, 366, 0x39D8E0,     20] ;
 Global $TrainWallbreaker[4]=[ 688, 366, 0x3AD8E0,     20] ;
 Global $TrainDarkHog[4]=[ 369, 366, 0x39CBDA,     20] 
 Global $TrainDarkMinion[4]=[ 225, 324, 0x4E91B0,     20]
+Global $TrainBalloon[4]=[ 218, 400, 0x701C10,     20]
 
 Global $NextBtn[2]        = [ 750, 500]
 ; Someone asking troops : Color 0xD0E978 in x = 121

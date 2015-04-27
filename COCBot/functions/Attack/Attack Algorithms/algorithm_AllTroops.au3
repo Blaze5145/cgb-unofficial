@@ -271,7 +271,9 @@ EndIf
          if LauchTroop($eWizard, $nbSides, 1, 1) Then
             If _Sleep(SetSleep(1)) Then Return
                EndIf
-
+		If LauchTroop($eBalloon, $nbSides, 1, 1) Then
+			If _Sleep(SetSleep(1)) Then Return
+			EndIf
          if LauchTroop($eMinion, $nbSides, 1, 1) Then
             If _Sleep(SetSleep(1)) Then Return
                EndIf
@@ -1486,7 +1488,7 @@ Func GetPixelDropTroop($troop, $number, $slotsPerEdge)
   Local $newPixelTopRight
   Local $newPixelBottomRight
 
-  If ($troop = $eArcher Or $troop = $eWizard Or $troop = $eMinion) Then
+	If ($troop = $eArcher Or $troop = $eWizard Or $troop = $eMinion Or $troop = $eBalloon) Then
     $newPixelTopLeft = $PixelTopLeftFurther
     $newPixelBottomLeft = $PixelBottomLeftFurther
     $newPixelTopRight = $PixelTopRightFurther

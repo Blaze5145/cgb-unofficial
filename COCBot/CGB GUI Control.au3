@@ -656,6 +656,8 @@ Func SetComboTroopComp()
 			GUICtrlSetData($txtNumWizards, $WizardsComp)
 			GUICtrlSetData($txtNumMinions, $MinionsComp)
 			GUICtrlSetData($txtNumHogs, $HogsComp)
+			GUICtrlSetState($txtNumBalloon, $GUI_ENABLE)
+			_GUICtrlEdit_SetReadOnly($txtNumBalloon, False)
 	EndSwitch
 	lblTotalCount()
 EndFunc   ;==>SetComboTroopComp

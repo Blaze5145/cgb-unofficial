@@ -692,13 +692,13 @@ $tabTroops = GUICtrlCreateTabItem("  Troops  ")
 			GUICtrlSetTip(-1, "Enter the No. of Wall Breakers to make.")
 			GUICtrlSetLimit(-1, 3)
 			GUICtrlSetState(-1, $GUI_DISABLE)
-#cs		$y +=22
+		 $y +=22
 		GUICtrlCreatePic (@ScriptDir & "\Icons\Balloon.jpg", $x, $y - 3, 20, 20)
-		$lblBalloons = GUICtrlCreateLabel("No. of Balloons:", $x + 25, $y, -1, -1)
-		$txtNumBalloons = GUICtrlCreateInput("0", $x + 130, $y - 5, 55, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
+		$lblBalloon = GUICtrlCreateLabel("No. of Balloons:", $x + 25, $y, -1, -1)
+		$txtNumBalloon = GUICtrlCreateInput("0", $x + 130, $y - 5, 55, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, "Enter the No. of Balloons to make.")
 			GUICtrlSetLimit(-1, 3)
-#ce			GUICtrlSetState(-1, $GUI_DISABLE)
+		 GUICtrlSetState(-1, $GUI_DISABLE)
 		$y +=22
 		GUICtrlCreatePic (@ScriptDir & "\Icons\Wizard.jpg", $x, $y - 3, 22, 22)
 		$lblWizards = GUICtrlCreateLabel("No. of Wizards:", $x + 25, $y, -1, -1)

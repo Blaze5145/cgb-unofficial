@@ -270,6 +270,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($txtGoblins, $GoblinsComp)
 	GUICtrlSetData($txtNumWallbreakers, $WBComp)
 	GUICtrlSetData($txtNumWizards, $WizardsComp)
+	GUICtrlSetData($txtNumBalloon, $BalloonComp)
 	GUICtrlSetData($txtNumMinions, $MinionsComp)
 	GUICtrlSetData($txtNumHogs, $HogsComp)
 	SetComboTroopComp()
