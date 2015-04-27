@@ -186,6 +186,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	 EndIf
 	GUICtrlSetData($txtATBullyMode, $ATBullyMode)
 	_GUICtrlComboBox_SetCurSel($cmbYourTH, $YourTH)
+	GUICtrlSetData($txtGoldorElixirTHB, $GoldorElixirTHB)
 	chkBullyMode()
 
 	If $OptTrophyMode = 1 Then
