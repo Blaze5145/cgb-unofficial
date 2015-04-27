@@ -56,7 +56,8 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 			Next
 		EndIf
 
-		If $OptBullyMode = 1 Then SETLOG("THBully Combo @" & $ATBullyMode & " SearchCount, " & $YourTHText)
+		$GoldorElixirTHB = GUICtrlRead($txtGoldorElixirTHB)
+If $OptBullyMode = 1 Then SETLOG("THBully Combo @" & $ATBullyMode & " SearchCount, " & $YourTHText & " , G/E : " &  $GoldorElixirTHB)
 
 		If $chkATH = 1 Then $chkATHText = "AttackTH"
 		If $chkATH = 1 And $AttackTHType = 0 Then $AttackTHTypeText = ", Barch"
@@ -85,10 +86,10 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				If checkDeadBase() Then
 					SetLog(_PadStringCenter(" Dead Base Found! ", 50, "~"), $COLOR_GREEN)
 					ExitLoop
-				ElseIf $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
-					If $SearchTHLResult = 1 Then
-						SetLog(_PadStringCenter(" Not a Dead Base, but TH Bully Level Found! ", 50, "~"), $COLOR_GREEN)
-						ExitLoop
+				ElseIf $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode)  Then
+                    If $SearchTHLResult = 1 And ((Number($searchGold) >= Number($GoldorElixirTHB)) or (Number($searchElixir) >= Number($GoldorElixirTHB))) Then
+                     SetLog(_PadStringCenter(" Not a Dead Base, but TH Bully Level Found ! ", 50, "~"), $COLOR_GREEN)
+                    ExitLoop
 					Else
 						If _Sleep(1000) Then ExitLoop (2)
 						SetLog(_PadStringCenter(" Not a Dead Base, Not TH Bully Level, Skipping ", 50, "~"), $COLOR_ORANGE)
