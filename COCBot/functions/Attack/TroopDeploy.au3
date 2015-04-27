@@ -28,6 +28,8 @@ Func NameOfTroop($kind, $plurial = 0)
 		 Return "Rage Spell"
 	  Case $eHSpell
 		 Return "Heal Spell"
+	  Case $eBalloon
+		 Return "Ballon"
 
 	 Case Else
 		 Return ""
@@ -67,6 +69,8 @@ Func IdentifyTroopKind($position)
    If _ColorCheck($TroopPixel, Hex(0x955630, 6), 20) Then Return $eHSpell ;Check if slot is Heal Spell
    If _ColorCheck($TroopPixel, Hex(0x705C60, 6), 20) Then Return $eRSpell ;Check if slot is Rage Spell
    If _ColorCheck($TroopPixel, Hex(0xF8EB79, 6), 20) Then Return $eKing ;Check if slot is King
+   If _ColorCheck($TroopPixel, Hex(0x511510, 6), 10) Then Return $eBalloon ;Check if slot is balloon
+   If _ColorCheck($TroopPixel, Hex(0x511510, 6), 10) Then Return $eBalloon ;Check if slot is balloon
    
    $WallBPixel = _GetPixelColor(68 + (72 * $position), 610)  ;
    if $position >= 3 then

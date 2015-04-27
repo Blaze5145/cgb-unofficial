@@ -118,7 +118,7 @@ Global $chklighspell
 Global $TrainSpecial=1 ;0=Only trains after atk. Setting is automatic
 Global $cBarbarian=0,$cArcher=0,$cGoblin=0,$cGiant=0,$cWallbreaker=0,$cWizard=0,$cBalloon=0,$cDragon=0,$cPekka=0,$cMinion=0,$cHogs=0,$cValkyrie=0,$cGolem=0,$cWitch=0
 ;Troop types
-Global Enum $eBarbarian, $eArcher, $eGiant, $eGoblin, $eWallbreaker, $eWizard, $eHog, $eMinion, $eKing, $eQueen, $eCastle, $eLSpell, $eRSpell, $eHSpell
+Global Enum $eBarbarian, $eArcher, $eGiant, $eGoblin, $eWallbreaker, $eWizard, $eHog, $eMinion, $eKing, $eQueen, $eCastle, $eLSpell, $eRSpell, $eHSpell, $eBalloon
 ;wall
 Global $wallcost
 Global $wallbuild
@@ -205,6 +205,7 @@ Global $WizardsComp
 Global $HogsComp
 Global $MinionsComp
 Global $GoblinsComp
+Global $BalloonComp
 Global $WBComp
 Global $CurBarb = 0
 Global $T[1] = [97]
@@ -214,6 +215,7 @@ Global $CurWizard = 0
 Global $CurGoblin = 0
 Global $CurWB = 0
 Global $CurHog = 0
+Global $CurBalloon = 0
 Global $CurMinion = 0
 Global $ArmyComp
 
@@ -243,6 +245,7 @@ Global $iTimeArch = 25
 Global $iTimeGoblin = 30
 Global $iTimeBarba = 20
 Global $iTimeWizard = 480
+Global $iTimeBalloon = 480
 
 ;General Settings
 Global $botPos[2] ; Position of bot used for Hide function

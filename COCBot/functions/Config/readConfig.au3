@@ -105,6 +105,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$GoblinsComp = IniRead($config, "troop", "goblin", "0")
 		$WBComp = IniRead($config, "troop", "WB", "0")
 		$WizardsComp = IniRead($config, "troop", "wizard", "0")
+		$BalloonComp = IniRead($config, "troop", "balloon", "0")
 		$MinionsComp = IniRead($config, "troop", "minion", "0")
 		$HogsComp = IniRead($config, "troop", "hog", "0")
 

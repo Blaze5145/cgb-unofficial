@@ -21,6 +21,9 @@ Func PrepareAttack($Remaining = False) ;Assigns troops
 			 ElseIf $troopKind = $eGiant Then
 				$atkTroops[$i][0] = $troopKind
 				ExitLoop
+			ElseIf $troopKind = $eBalloon Then
+				$atkTroops[$i][0] = $troopKind
+				ExitLoop
 			 ElseIf $troopKind = $eWizard Then
 				$atkTroops[$i][0] = $troopKind
 				ExitLoop

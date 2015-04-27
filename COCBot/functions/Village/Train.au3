@@ -20,6 +20,8 @@ Func GetTrainPos($troopKind)
 	  Return $TrainDarkHog
    Case $eMinion ; 688, 366, 0x3AD8E0
 	  Return $TrainDarkMinion
+   Case $eBalloon
+	  Return $TrainBalloon
    Case Else
 	  SetLog("Don't know how to train the troop " & $troopKind & " yet")
 	  Return 0
@@ -96,6 +98,7 @@ Func Train()
 		$CurGoblin = 0
 		$CurHog = 0
 		$CurMinion = 0
+		$CurBalloon = 0
 	Endif
 
 	If $fullArmy and $ArmyComp = 0 Then
@@ -104,6 +107,7 @@ Func Train()
 		$CurMinion = GUICtrlRead($txtNumMinions)
 		$CurWB = GUICtrlRead($txtNumWallbreakers)
 		$CurWizard = GUICtrlRead($txtNumWizards)
+		$CurBalloon = GUICtrlRead($txtNumBalloon)
 		$CurGoblin = ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtGoblins)/100
 		$CurGoblin = Round($CurGoblin)
 		$CurBarb = ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtBarbarians)/100
@@ -116,6 +120,7 @@ Func Train()
 		$CurMinion += GUICtrlRead($txtNumMinions)
 		$CurWB += GUICtrlRead($txtNumWallbreakers)
 		$CurWizard = GUICtrlRead($txtNumWizards)
+		$CurBalloon += GUICtrlRead($txtNumBalloon)
 		$CurGoblin += ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtGoblins)/100
 		$CurGoblin = Round($CurGoblin)
 		$CurBarb += ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtBarbarians)/100
@@ -124,7 +129,7 @@ Func Train()
 		$CurArch = Round($CurArch)
 	EndIf
 
-	Local $GiantEBarrack ,$WallEBarrack ,$ArchEBarrack ,$BarbEBarrack ,$GoblinEBarrack,$HogEBarrack,$MinionEBarrack, $WizardEBarrack
+	Local $GiantEBarrack ,$WallEBarrack ,$ArchEBarrack ,$BarbEBarrack ,$GoblinEBarrack,$HogEBarrack,$MinionEBarrack, $WizardEBarrack, $BalloonEBarrack
 	if $barrackNum <> 0 then
 		$GiantEBarrack = Floor($CurGiant/$barrackNum)
 		$WallEBarrack = Floor($CurWB/$barrackNum)
@@ -132,6 +137,7 @@ Func Train()
 		$BarbEBarrack = Floor($CurBarb/$barrackNum)
 		$GoblinEBarrack = Floor($CurGoblin/$barrackNum)
 		$WizardEBarrack = Floor($CurWizard/$barrackNum)
+		$BalloonEBarrack = Floor($CurBalloon/$barrackNum)
 	else
 		$GiantEBarrack = Floor($CurGiant/4)
 		$WallEBarrack = Floor($CurWB/4)
@@ -139,13 +145,14 @@ Func Train()
 		$BarbEBarrack = Floor($CurBarb/4)
 		$GoblinEBarrack = Floor($CurGoblin/4)
 		$WizardEBarrack = Floor($CurWizard/4)
+		$BalloonEBarrack = Floor($CurBalloon/4)
 	endif
 	$HogEBarrack = Floor($CurHog/2)
 	$MinionEBarrack = Floor($CurMinion/2)
 
 	If $ArmyComp = 0 Then
 		If $fullArmy Then
-			Local $TimeETroops = $WizardEBarrack * $iTimeWizard + $GiantEBarrack * $iTimeGiant + $WallEBarrack * $iTimeWall + $ArchEBarrack * $iTimeArch + $BarbEBarrack * $iTimeBarba + $GoblinEBarrack*$iTimeGoblin + 180
+			Local $TimeETroops = $BalloonEBarrack * $iTimeBalloon + $WizardEBarrack * $iTimeWizard + $GiantEBarrack * $iTimeGiant + $WallEBarrack * $iTimeWall + $ArchEBarrack * $iTimeArch + $BarbEBarrack * $iTimeBarba + $GoblinEBarrack*$iTimeGoblin + 180
 			$iTimeTroops = _DateAdd( 's',$TimeETroops,  _NowCalc())
 		Endif
 		If _GUICtrlComboBox_GetCurSel($cmbTroopComp) = 8 Then
@@ -154,7 +161,7 @@ Func Train()
 	EndIf
 	Local $hTimer = TimerInit()
 	Local $troopFirstHog,$troopSecondHog,$troopFirstMinion,$troopSecondMinion,$troopFirstGiant,$troopSecondGiant,$troopFirstWall,$troopSecondWall,$troopFirstGoblin,$troopSecondGoblin
-	Local $troopFirstBarba,$troopSecondBarba,$troopFirstArch,$troopSecondArch,$troopFirstWizard,$troopSecondWizard
+	Local $troopFirstBarba,$troopSecondBarba,$troopFirstArch,$troopSecondArch,$troopFirstWizard,$troopSecondWizard,$troopFirstBalloon,$troopSecondBalloon
 	$troopFirstGiant = 0
 	$troopSecondGiant = 0
 	$troopFirstHog = 0
@@ -171,6 +178,8 @@ Func Train()
 	$troopSecondArch = 0
 	$troopFirstWizard = 0
 	$troopSecondWizard = 0
+	$troopFirstBalloon = 0
+	$troopSecondBalloon = 0
 
 	If _Sleep(1000) Then return
 	Local $NextPos = _PixelSearch(749, 333, 787, 349, Hex(0xF08C40, 6), 5)
@@ -245,7 +254,13 @@ Func Train()
 			  $troopFirstWizard = Number(getOther(171 + 107 * 1, 384, "Barrack"))
 			  if $troopFirstWizard = 0 then
 				  $troopFirstWizard = Number(getOther(171 + 107 * 1, 384, "Barrack"))
-			  endif
+			   endif
+			EndIf
+		   If GUICtrlRead($txtNumBalloon) <> "0" Then
+			  $troopFirstBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
+			  if $troopFirstBalloon = 0 then
+				  $troopFirstBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
+			   endif
 		   Endif
 		   if GUICtrlRead($txtNumWallbreakers) <> "0" then
 			  $troopFirstWall = Number(getOther(171 + 107 * 4, 278, "Barrack"))
@@ -340,7 +355,17 @@ Func Train()
 			   endif
 		   EndIf
 		   
-
+		   If GUICtrlRead($txtNumBalloon) <> "0" And $CurBalloon > 0 Then
+			   If $CurBalloon > 0 Then
+				   if $BalloonEBarrack = 0 then
+					    TrainIt($eBalloon, 1)
+					elseif $BalloonEBarrack >= $CurBalloon or $BalloonEBarrack = 0  then
+					   TrainIt($eBalloon, $CurBalloon)
+				   else
+					   TrainIt($eBalloon, $BalloonEBarrack)
+				   endif
+			   endif
+		   EndIf
 		   If GUICtrlRead($txtNumWallbreakers) <> "0" And $CurWB > 0 Then
 			   ;If _ColorCheck(_GetPixelColor(688, 366), Hex(0x3AD8E0, 6), 20) And $CurWB > 0  Then
 			   If $CurWB > 0  Then
@@ -381,6 +406,12 @@ Func Train()
 			  if $troopSecondWizard = 0 then
 				  $troopSecondWizard = Number(getOther(171 + 107 * 1, 384, "Barrack"))
 			   endif
+			   EndIf
+		   If GUICtrlRead($txtNumBalloon) <> "0" Then
+			  $troopSecondBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
+			  if $troopSecondBalloon = 0 then
+				  $troopSecondBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
+			   endif
 			EndIf
 		   if GUICtrlRead($txtNumWallbreakers) <> "0" then
 			  $troopSecondWall = Number(getOther(171 + 107 * 4, 278, "Barrack"))
@@ -418,7 +449,11 @@ Func Train()
 			   $ArmyComp += ($troopSecondWizard - $troopFirstWizard)*5
 			   $CurWizard -= ($troopSecondWizard - $troopFirstWizard)
 		   endif
-
+		   
+			if $troopSecondBalloon > $troopFirstBalloon and GUICtrlRead($txtNumBalloon) <> "0" then
+			   $ArmyComp += ($troopSecondBalloon - $troopFirstBalloon)*5
+			   $CurBalloon -= ($troopSecondBalloon - $troopFirstBalloon)
+			endif
 
 		   if $troopSecondWall > $troopFirstWall and GUICtrlRead($txtNumWallbreakers) <> "0" then
 			   $ArmyComp += ($troopSecondWall - $troopFirstWall)*2
@@ -449,7 +484,7 @@ Func Train()
 		   endif
 		   ;SetLog("Total Troops building : " & $ArmyComp , $COLOR_RED)
 
-			if ($troopSecondWizard = 0 and $troopSecondGiant = 0 and $troopSecondWall = 0 and $troopSecondGoblin = 0 and $CurHog<=0 and $CurMinion <= 0) then
+			if ($troopSecondBalloon = 0 and $troopSecondWizard = 0 and $troopSecondGiant = 0 and $troopSecondWall = 0 and $troopSecondGoblin = 0 and $CurHog<=0 and $CurMinion <= 0) then
 				if GUICtrlRead($txtGoblins) <> "0" or GUICtrlRead($txtBarbarians) <> "0" or GUICtrlRead($txtArchers) <> "0" then
 					if $troopSecondArch <= 10 and $troopSecondBarba = 0 then
 						TrainIt($eArcher, 20)
@@ -458,7 +493,7 @@ Func Train()
 					endif
 				endif
 			endif
-			if ($troopSecondWizard <= 1 and $troopSecondGiant <= 1 and $troopSecondWall <= 1 and $troopSecondArch = 0 and $troopSecondBarba = 0 and $troopSecondGoblin = 0 and $CurHog<=0 and $CurMinion <= 0) then
+			if ($troopSecondBalloon <= 0 and $troopSecondWizard <= 1 and $troopSecondGiant <= 1 and $troopSecondWall <= 1 and $troopSecondArch = 0 and $troopSecondBarba = 0 and $troopSecondGoblin = 0 and $CurHog<=0 and $CurMinion <= 0) then
 				if GUICtrlRead($txtGoblins) <> "0" or GUICtrlRead($txtBarbarians) <> "0" or GUICtrlRead($txtArchers) <> "0" then
 					if _ColorCheck(_GetPixelColor(327, 520), Hex(0xD03838, 6), 20) then
 						Click(496, 197, 5,5)
@@ -660,6 +695,9 @@ Func checkArmyCamp()
 			  ElseIf _ColorCheck($TroopKind, Hex(0xC07870, 6), 20) Then
 				 if ($CurWizard=0 and $FirstStart) then $CurWizard -= $TroopQ
 				 $TroopName = "Wizards"
+			   ElseIf _ColorCheck($TroopKind, Hex(0x941D15, 6), 20) Then
+				 if ($CurBalloon=0 and $FirstStart) then $CurBalloon -= $TroopQ
+				 $TroopName = "Balloon"
 			  EndIf
 			  ;656,359,0xBCBAAC   ---   6  --nothing
 			  If $TroopQ <> 0 Then SetLog(" - No. of " & $TroopName & ": " & $TroopQ)
