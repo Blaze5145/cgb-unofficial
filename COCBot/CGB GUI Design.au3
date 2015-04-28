@@ -380,7 +380,7 @@ $tabAttack = GUICtrlCreateTabItem("Attack Basics ")
 		$Randomspeedatk = GUICtrlCreateCheckbox("Random", $x + 250, $y, -1, -1)
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "Randomspeedatk")
-		$chkDeployRedArea = GUICtrlCreateCheckbox("Attack next red area", $x +312, $y, -1, -1)	
+		$chkDeployRedArea = GUICtrlCreateCheckbox("Attack next red area", $x +312, $y, -1, -1)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	Local $x = 30, $y = 250
@@ -485,63 +485,35 @@ GUICtrlCreateTabItem("")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	Local $x = 30, $y = 285
-$grpAtkCombos = GUICtrlCreateGroup("Advanced Attack Combo's", $x - 20, $y - 20, 450, 150)
-$chkBullyMode = GUICtrlCreateCheckbox("TH Bully after:", $x, $y, -1, -1)
-$txtTip = "Adds the TH Bully combo to the current search settings. (Example: Deadbase OR TH Bully)" & @CRLF & _
-"TH Bully: Attacks a lower townhall level after the specified No. of searches."
-GUICtrlSetTip(-1, $txtTip)
-GUICtrlSetOnEvent(-1, "chkBullyMode")
-$txtATBullyMode = GUICtrlCreateInput("150", $x + 100, $y, 60, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-$txtTip = "TH Bully: No. of searches to wait before activating."
-GUICtrlSetLimit(-1, 3)
-GUICtrlSetTip(-1, $txtTip)
-GUICtrlSetState(-1, $GUI_DISABLE)
-$lblATBullyMode = GUICtrlCreateLabel("search(es).", $x + 165, $y + 5, -1, -1)
-$y +=22
-$lblATBullyMode = GUICtrlCreateLabel("Max TH lvl:", $x + 20, $y + 5, -1, -1, $SS_RIGHT)
-$cmbYourTH = GUICtrlCreateCombo("", $x + 100, $y, 60, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-$txtTip = "TH Bully: Max. Townhall level to bully."
-GUICtrlSetTip(-1, $txtTip)
-GUICtrlSetData(-1, "4-6|7|8|9|10", "4-6")
-GUICtrlSetState(-1, $GUI_DISABLE)
-$y +=27
-$lblGoldorElixirTHB = GUICtrlCreateLabel("Minimum G/E: ", $x + 20, $y + 5, -1, -1, $SS_RIGHT)
-$txtTip = "Set the Min. amount of Gold/Elixir to search for on a village to attack THBully."
-GUICtrlSetTip(-1, $txtTip)
-$txtGoldorElixirTHB = GUICtrlCreateInput("150000", $x + 100, $y, 60, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-GUICtrlSetTip(-1, $txtTip)
-GUICtrlSetLimit(-1, 6)
-GUICtrlSetState(-1, $GUI_DISABLE)
-Local $x = 30, $y = 285
-$grpAtkCombos = GUICtrlCreateGroup("Advanced Attack Combo's", $x - 20, $y - 20, 450, 150)
-$chkBullyMode = GUICtrlCreateCheckbox("TH Bully after:", $x, $y, -1, -1)
-$txtTip = "Adds the TH Bully combo to the current search settings. (Example: Deadbase OR TH Bully)" & @CRLF & _
-"TH Bully: Attacks a lower townhall level after the specified No. of searches."
-GUICtrlSetTip(-1, $txtTip)
-GUICtrlSetOnEvent(-1, "chkBullyMode")
-$txtATBullyMode = GUICtrlCreateInput("150", $x + 100, $y, 60, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-$txtTip = "TH Bully: No. of searches to wait before activating."
-GUICtrlSetLimit(-1, 3)
-GUICtrlSetTip(-1, $txtTip)
-GUICtrlSetState(-1, $GUI_DISABLE)
-$lblATBullyMode = GUICtrlCreateLabel("search(es).", $x + 165, $y + 5, -1, -1)
-$y +=22
-$lblATBullyMode = GUICtrlCreateLabel("Max TH lvl:", $x + 20, $y + 5, -1, -1, $SS_RIGHT)
-$cmbYourTH = GUICtrlCreateCombo("", $x + 100, $y, 60, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-$txtTip = "TH Bully: Max. Townhall level to bully."
-GUICtrlSetTip(-1, $txtTip)
-GUICtrlSetData(-1, "4-6|7|8|9|10", "4-6")
-GUICtrlSetState(-1, $GUI_DISABLE)
-$y +=27
-$lblGoldorElixirTHB = GUICtrlCreateLabel("Minimum G/E: ", $x + 20, $y + 5, -1, -1, $SS_RIGHT)
-$txtTip = "Set the Min. amount of Gold/Elixir to search for on a village to attack THBully."
-GUICtrlSetTip(-1, $txtTip)
-$txtGoldorElixirTHB = GUICtrlCreateInput("150000", $x + 100, $y, 60, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
-GUICtrlSetTip(-1, $txtTip)
-GUICtrlSetLimit(-1, 6)
-GUICtrlSetState(-1, $GUI_DISABLE)
-$y+=27
-$chkTrophyMode = GUICtrlCreateCheckbox("TH Snipe within:", $x, $y, -1, -1)
+	$grpAtkCombos = GUICtrlCreateGroup("Advanced Attack Combo's", $x - 20, $y - 20, 450, 150)
+		$chkBullyMode = GUICtrlCreateCheckbox("TH Bully after:", $x, $y, -1, -1)
+			$txtTip = "Adds the TH Bully combo to the current search settings. (Example: Deadbase OR TH Bully)" & @CRLF & _
+			"TH Bully: Attacks a lower townhall level after the specified No. of searches."
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetOnEvent(-1, "chkBullyMode")
+		$txtATBullyMode = GUICtrlCreateInput("150", $x + 100, $y, 60, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			$txtTip = "TH Bully: No. of searches to wait before activating."
+			GUICtrlSetLimit(-1, 3)
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetState(-1, $GUI_DISABLE)
+		$lblATBullyMode = GUICtrlCreateLabel("search(es).", $x + 165, $y + 5, -1, -1)
+		$y +=22
+		$lblATBullyMode = GUICtrlCreateLabel("Max TH lvl:", $x + 20, $y + 5, -1, -1, $SS_RIGHT)
+		$cmbYourTH = GUICtrlCreateCombo("", $x + 100, $y, 60, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+			$txtTip = "TH Bully: Max. Townhall level to bully."
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetData(-1, "4-6|7|8|9|10", "4-6")
+			GUICtrlSetState(-1, $GUI_DISABLE)
+		$y +=27
+		$lblGoldorElixirTHB = GUICtrlCreateLabel("Minimum G/E: ", $x + 20, $y + 5, -1, -1, $SS_RIGHT)
+			$txtTip = "Set the Min. amount of Gold/Elixir to search for on a village to attack THBully."
+			GUICtrlSetTip(-1, $txtTip)
+			$txtGoldorElixirTHB = GUICtrlCreateInput("150000", $x + 100, $y, 60, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 6)
+			GUICtrlSetState(-1, $GUI_DISABLE)
+		$y+=27
+		$chkTrophyMode = GUICtrlCreateCheckbox("TH Snipe within:", $x, $y, -1, -1)
 			$txtTip = "Adds the TH Snipe combination to the current search settings. (Example: Deadbase OR TH Snipe)"
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "chkSnipeMode")
@@ -568,8 +540,8 @@ $tabDonate = GUICtrlCreateTabItem("  Donate  ")
 			GUICtrlSetOnEvent(-1, "chkRequest")
 		$txtRequest = GUICtrlCreateInput("Anything please", $x + 98, $y, 202, -1)
 			GUICtrlSetTip(-1, "This text is used on your request for troops in the Clan chat.")
-		$gtfo = GUICtrlCreateCheckbox("GTFO", $x + 305, $y-10, 50, 17) 
-			GUICtrlSetTip(-1, "Kick after donating") 
+		$gtfo = GUICtrlCreateCheckbox("GTFO", $x + 305, $y-10, 50, 17)
+			GUICtrlSetTip(-1, "Kick after donating")
 		$lblMaxDonations = GUICtrlCreatelabel("Max Donations:", $x + 305, $y+14, -1, -1)
 			GUICtrlSetTip(-1, "This will decide the no : of troops to be donated.")
 		$cmbMaxDonations = GUICtrlCreateCombo("", $x + 382, $y+8, 40, 20, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
@@ -1031,13 +1003,13 @@ Local $x = 30, $y = 280
 			$txtTip = "Step #1: Locate at least 1 upgrade!"
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "btnLocateUpgrade4")
-		
+
 		GUICtrlCreatePic (@ScriptDir & "\Icons\Gold.jpg", $x + 220, $y + 27, 17, 17)
 		$UpgrMinGold = GUICtrlCreateLabel("Min. Gold to save:", $x + 240, $y + 30, -1, -1)
 		$txtUpgrMinGold = GUICtrlCreateInput("2500000", $x + 330, $y + 25, 61, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			GUICtrlSetTip(-1, "Save at least this amount of Gold in your Storages." & @CRLF & "Set this value higher if you want to upgrade other stuff.")
 			GUICtrlSetLimit(-1, 7)
-		
+
 		GUICtrlCreatePic (@ScriptDir & "\Icons\Elixir.jpg", $x, $y + 27, 17, 17)
 		$UpgrMinElixir = GUICtrlCreateLabel("Min. Elixir to save:", $x + 20, $y + 30, -1, -1)
 		$txtUpgrMinElixir = GUICtrlCreateInput("2500000", $x + 110, $y + 25, 61, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
