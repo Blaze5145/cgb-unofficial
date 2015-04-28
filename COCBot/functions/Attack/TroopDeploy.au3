@@ -62,7 +62,6 @@ Func IdentifyTroopKind($position)
    If _ColorCheck($TroopPixel, Hex(0x603A30, 6), 20) Then Return $eHog
    ;If _ColorCheck($TroopPixel, Hex(0x3C76B4, 6), 20) Then Return $eMinion;
    ;If _ColorCheck($TroopPixel, Hex(0x4392C9, 6), 20) Then Return $eMinion
-   If _ColorCheck($TroopPixel, Hex(0x4CA0D2, 6), 20) Then Return $eMinion
    If _ColorCheck($TroopPixel, Hex(0xF8F2D1, 6), 10) Then Return $eWizard ;Check if slot is Wizard
    If _ColorCheck($TroopPixel, Hex(0x955630, 6), 20) Then Return $eHSpell ;Check if slot is Heal Spell
    If _ColorCheck($TroopPixel, Hex(0x705C60, 6), 20) Then Return $eRSpell ;Check if slot is Rage Spell
@@ -75,7 +74,8 @@ Func IdentifyTroopKind($position)
    if $position >= 7 then
 	$WallBPixel = _GetPixelColor(70 + (72 * $position), 610)
    endif
-   If _ColorCheck($TroopPixel, Hex(0x60A4D0, 6), 10) and _ColorCheck($WallBPixel, Hex(0x302A2A, 6), 10) Then Return $eWallbreaker ;Check if slot is Wallbreaker
+   If _ColorCheck($TroopPixel, Hex(0x60A4D0, 6), 10) and _ColorCheck($WallBPixel, Hex(0x302A2A, 6), 10) Then Return $eWallbreaker ;Check if slot is Wallbreaker   
+   If _ColorCheck($TroopPixel, Hex(0x4CA0D2, 6), 10) Then Return $eMinion
    
    ;$OtherPixel = _GetPixelColor(68 + (72 * $position), 588)
    ;If _ColorCheck($OtherPixel, Hex(0x7031F0, 6), 20) Or _ColorCheck($TroopPixel, Hex(0x421E3F, 6), 20) Then Return $eQueen ;Check if slot is Queen <= level 10 Or Check if slot is Queen > level 10
