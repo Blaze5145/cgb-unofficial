@@ -3,7 +3,7 @@
 Func _PushBullet($pTitle = "", $pMessage = "")
     $oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
     $access_token = "your account"
-    $oHTTP.Open("Get", "[url=https://api.pushbullet.com/v2/devices]https://api.pushbullet.com/v2/devices[/url]", False)
+    $oHTTP.Open("Get", "https://api.pushbullet.com/v2/devices", False)
     $oHTTP.SetCredentials($access_token, "", 0)
     $oHTTP.Send()
     $Result = $oHTTP.ResponseText
@@ -15,7 +15,7 @@ EndFunc   ;==>_PushBullet
 Func _Push($pTitle, $pMessage)
     $oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
     $access_token = "your account"
-    $oHTTP.Open("Post", "[url=https://api.pushbullet.com/v2/pushes]https://api.pushbullet.com/v2/pushes[/url]", False)
+    $oHTTP.Open("Post", "https://api.pushbullet.com/v2/pushes", False)
     $oHTTP.SetCredentials($access_token, "", 0)
     $oHTTP.SetRequestHeader("Content-Type", "application/json")
     Local $pPush = '{"type": "note", "title": "' & $pTitle & '", "body": "' & $pMessage & '"}'
