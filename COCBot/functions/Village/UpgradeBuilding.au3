@@ -9,7 +9,7 @@ Func UpgradeIt4()
 ; check to see if anything is enabled before wasting time.
     For $iz = 0 to 3
       If GUICtrlRead($chkbxUpgrade[$iz])= $GUI_CHECKED then
-         $iUpgradeAction = += 2^($iz+1)
+         $iUpgradeAction += 2^($iz+1)
       EndIf
    Next
    If $iUpgradeAction < 0 then Return False
