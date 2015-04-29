@@ -315,3 +315,9 @@ Global $hUpTypeGold = @ScriptDir & "\Icons\Gold.bmp"
 Global $hUpTypeElixir = @ScriptDir & "\Icons\Elixir.bmp"
 Global $hUpTypeDark = @ScriptDir & "\Icons\Dark.bmp"
 Global $hUpTypeBlank = @ScriptDir & "\Icons\Blank.bmp"
+
+;PushBullet
+Global $PushBulletEnabled = 0
+Global $PushBulletToken = ""
+Global $PushBulletVillageReport = 0
+Global $PushBulletMatchFound = 0

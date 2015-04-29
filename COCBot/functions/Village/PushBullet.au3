@@ -2,7 +2,7 @@
 #include <String.au3>
 Func _PushBullet($pTitle = "", $pMessage = "")
     $oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
-    $access_token = "your account"
+    $access_token = $PushBulletToken
     $oHTTP.Open("Get", "https://api.pushbullet.com/v2/devices", False)
     $oHTTP.SetCredentials($access_token, "", 0)
     $oHTTP.Send()
@@ -14,11 +14,11 @@ Func _PushBullet($pTitle = "", $pMessage = "")
 EndFunc   ;==>_PushBullet
 Func _Push($pTitle, $pMessage)
     $oHTTP = ObjCreate("WinHTTP.WinHTTPRequest.5.1")
-    $access_token = "your account"
+    $access_token = $PushBulletToken
     $oHTTP.Open("Post", "https://api.pushbullet.com/v2/pushes", False)
     $oHTTP.SetCredentials($access_token, "", 0)
     $oHTTP.SetRequestHeader("Content-Type", "application/json")
     Local $pPush = '{"type": "note", "title": "' & $pTitle & '", "body": "' & $pMessage & '"}'
     $oHTTP.Send($pPush)
 EndFunc   ;==>_Push
-_PushBullet()
+;_PushBullet()

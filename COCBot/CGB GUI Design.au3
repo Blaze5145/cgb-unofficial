@@ -872,6 +872,22 @@ Local $x = 30, $y = 160
 			GUICtrlSetOnEvent(-1, "btnLocateSpellfactory")
 			_ArrayConcatenate($G, $T)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
+
+	Local $x = 30, $y = 380
+	$grpPushBulletNotifications = GUICtrlCreateGroup("PushBullet Notifications", $x - 20, $y - 20, 450, 100)
+	    $chkPushBulletEnabled = GUICtrlCreateCheckbox("Enable - Account Token :", $x, $y + 3, -1, -1)
+			GUICtrlSetTip(-1, "Enable PushBullet notification.")
+			GUICtrlSetOnEvent(-1, "chkPushBulletEnabled")
+		$txtPushBulletToken = GUICtrlCreateInput("", $x + 150, $y + 2, 260, 21)
+			GUICtrlSetState(-1, $GUI_DISABLE)
+	    $lblPushMessage = GUICtrlCreateGroup("Push Messages", $x + 150, $y + 35, 260, 40)
+			$chkPushVillageReport = GUICtrlCreateCheckbox("Village Report", $x + 175, $y + 50, -1, -1)
+			   GUICtrlSetState(-1, $GUI_DISABLE)
+			   GUICtrlSetTip(-1, "Will send push message for village report")
+			$chkPushMatchFound = GUICtrlCreateCheckbox("Match Found", $x + 295, $y + 50, -1, -1)
+			   GUICtrlSetState(-1, $GUI_DISABLE)
+			   GUICtrlSetTip(-1, "Will send push message when match found")
+	GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
 ;~ -------------------------------------------------------------
 ; Upgrades Tab
