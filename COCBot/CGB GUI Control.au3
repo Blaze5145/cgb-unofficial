@@ -48,7 +48,7 @@ EndFunc   ;==>GUIControl
 
 Func SetTime()
     Local $time = _TicksToTime(Int(TimerDiff($sTimer)), $hour, $min, $sec)
-	If _GUICtrlTab_GetCurSel($tabMain) = 7 Then GUICtrlSetData($lblresultruntime, StringFormat("%02i:%02i:%02i", $hour, $min, $sec))
+	If _GUICtrlTab_GetCurSel($tabMain) = 8 Then GUICtrlSetData($lblresultruntime, StringFormat("%02i:%02i:%02i", $hour, $min, $sec))
 EndFunc   ;==>SetTime
 
 Func btnStart()
