@@ -1130,52 +1130,55 @@ Local $x = 30, $y = 160
 
 
 	$x = 30
-	$y = 270
-	$grpStatsMisc = GUICtrlCreateGroup("Stats: Misc", $x - 20, $y - 20, 450, 60)
-		$y -=2
-		GUICtrlCreatePic (@ScriptDir & "\Icons\TH1.jpg", $x - 15, $y + 7, 20, 20)
-	 GUICtrlCreatePic (@ScriptDir & "\Icons\TH10.jpg", $x + 6, $y + 7, 20, 20)
-		  $lblvillagesattacked = GUICtrlCreateLabel("Attacked:", $x + 28, $y + 2, -1, 17)
-		  $lblresultvillagesattacked = GUICtrlCreateLabel("0", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
-			$txtTip = "The No. of Villages that were attacked by the Bot."
-			GUICtrlSetTip(-1, $txtTip)
-		$y += 17
-		  $lblvillagesskipped = GUICtrlCreateLabel("Skipped:", $x + 28, $y + 2, -1, 17)
-		  $lblresultvillagesskipped = GUICtrlCreateLabel("0", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
-			$txtTip = "The No. of Villages that were skipped during search by the Bot."
-			GUICtrlSetTip(-1, $txtTip)
-		$x = 180
-		$y = 268
-		GUICtrlCreatePic (@ScriptDir & "\Icons\Trophy.jpg", $x, $y, 15, 15)
-		  $lbltrophiesdropped = GUICtrlCreateLabel("Dropped:", $x + 20, $y + 2, -1, 17)
-		  $lblresulttrophiesdropped = GUICtrlCreateLabel("0", $x + 80, $y + 2, 30, 17, $SS_RIGHT)
-			$txtTip = "The amount of Trophies dropped by the Bot due to Trophy Settings (on Misc Tab)."
-			GUICtrlSetTip(-1, $txtTip)
-		  $y += 17
-		  GUICtrlCreatePic (@ScriptDir & "\Icons\Clock.jpg", $x, $y, 15, 15)
-		  $lblruntime = GUICtrlCreateLabel("Runtime:", $x + 20, $y + 2, -1, 17)
-		  $lblresultruntime = GUICtrlCreateLabel("00:00:00", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
-			$txtTip = "The total Running Time of the Bot."
-			GUICtrlSetTip(-1, $txtTip)
-		$x = 330
-		$y = 268
-		GUICtrlCreatePic (@ScriptDir & "\Icons\Wall.jpg", $x - 3, $y + 7, 20, 20)
-		  $lblwallbygold = GUICtrlCreateLabel("Upg. by Gold:", $x + 20, $y + 2, -1, 17)
-		$lblWallgoldmake =  GUICtrlCreateLabel("0", $x + 55, $y + 2, 60, 17, $SS_RIGHT)
-			$txtTip = "The No. of Walls upgraded by Gold."
-			GUICtrlSetTip(-1, $txtTip)
-		$y += 17
-		$lblwallbyelixir = GUICtrlCreateLabel("Upg. by Elixir:", $x + 20, $y + 2, -1, 17)
-		$lblWallelixirmake =  GUICtrlCreateLabel("0", $x + 55, $y + 2, 60, 17, $SS_RIGHT)
-			$txtTip = "The No. of Walls upgraded by Elixir."
-			GUICtrlSetTip(-1, $txtTip)
-		  ;$lbloutofsync = GUICtrlCreateLabel("Out Of Sync :", 260, 263, 100, 17) ; another stats next post
-		  ;$lblresultoutofsync = GUICtrlCreateLabel("0", 380, 263, 60, 17, $SS_RIGHT) ; another stats next post
-	GUICtrlCreateGroup("", -99, -99, 1, 1)
+   $y = 265
+$grpStatsMisc = GUICtrlCreateGroup("Stats: Misc", $x - 20, $y - 20, 450, 75)
+$y -=2
+GUICtrlCreatePic (@ScriptDir & "\Icons\TH1.jpg", $x - 15, $y + 7, 20, 20)
+   GUICtrlCreatePic (@ScriptDir & "\Icons\TH10.jpg", $x + 6, $y + 7, 20, 20)
+       $lblvillagesattacked = GUICtrlCreateLabel("Attacked:", $x + 28, $y + 2, -1, 17)
+       $lblresultvillagesattacked = GUICtrlCreateLabel("0", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
+$txtTip = "The No. of Villages that were attacked by the Bot."
+GUICtrlSetTip(-1, $txtTip)
+$y += 17
+       $lblvillagesskipped = GUICtrlCreateLabel("Skipped:", $x + 28, $y + 2, -1, 17)
+       $lblresultvillagesskipped = GUICtrlCreateLabel("0", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
+$txtTip = "The No. of Villages that were skipped during search by the Bot."
+GUICtrlSetTip(-1, $txtTip)
+$x = 180
+$y = 263
+GUICtrlCreatePic (@ScriptDir & "\Icons\Trophy.jpg", $x, $y, 15, 15)
+       $lbltrophiesdropped = GUICtrlCreateLabel("Dropped:", $x + 20, $y + 2, -1, 17)
+       $lblresulttrophiesdropped = GUICtrlCreateLabel("0", $x + 80, $y + 2, 30, 17, $SS_RIGHT)
+$txtTip = "The amount of Trophies dropped by the Bot due to Trophy Settings (on Misc Tab)."
+GUICtrlSetTip(-1, $txtTip)
+       $y += 17
+       GUICtrlCreatePic (@ScriptDir & "\Icons\Clock.jpg", $x, $y, 15, 15)
+       $lblruntime = GUICtrlCreateLabel("Runtime:", $x + 20, $y + 2, -1, 17)
+       $lblresultruntime = GUICtrlCreateLabel("00:00:00", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
+$txtTip = "The total Running Time of the Bot."
+GUICtrlSetTip(-1, $txtTip)
+$x = 330
+$y = 263
+GUICtrlCreatePic (@ScriptDir & "\Icons\Wall.jpg", $x - 3, $y + 7, 20, 20)
+       $lblwallbygold = GUICtrlCreateLabel("Upg. by Gold:", $x + 20, $y + 2, -1, 17)
+$lblWallgoldmake =  GUICtrlCreateLabel("0", $x + 55, $y + 2, 60, 17, $SS_RIGHT)
+$txtTip = "The No. of Walls upgraded by Gold."
+GUICtrlSetTip(-1, $txtTip)
+$y += 17
+$lblwallbyelixir = GUICtrlCreateLabel("Upg. by Elixir:", $x + 20, $y + 2, -1, 17)
+$lblWallelixirmake =  GUICtrlCreateLabel("0", $x + 55, $y + 2, 60, 17, $SS_RIGHT)
+$txtTip = "The No. of Walls upgraded by Elixir."
+GUICtrlSetTip(-1, $txtTip)
+$y += 17
+       $lbloutofsync = GUICtrlCreateLabel("Out Of Sync :", $x + 20, $y + 2, -1, 17)
+       $lblresultoutofsync = GUICtrlCreateLabel("0", $x + 55, $y + 2, 60, 17, $SS_RIGHT)
+   $txtTip = "Restarted after Out of Sync Error:"
+GUICtrlSetTip(-1, $txtTip)
+GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	$x = 30
-	$y = 335
-	$grpCredits = GUICtrlCreateGroup("Credits", $x - 20, $y - 20, 450, 170)
+$x = 30
+$y = 340
+$grpCredits = GUICtrlCreateGroup("Credits", $x - 20, $y - 20, 450, 170)
 		$labelGameBotURL = GUICtrlCreateLabel("https://GameBot.org", $x - 5, $y + 5, 430, 20)
 ;~			GUICtrlSetFont(-1, 11, 100, 4)
 			GUICtrlSetColor(-1, 0x0000FF)
