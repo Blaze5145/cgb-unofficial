@@ -65,6 +65,8 @@ Func IdentifyTroopKind($position)
    ;If _ColorCheck($TroopPixel, Hex(0x3C76B4, 6), 20) Then Return $eMinion;
    ;If _ColorCheck($TroopPixel, Hex(0x4392C9, 6), 20) Then Return $eMinion
    If _ColorCheck($TroopPixel, Hex(0xF8F2D1, 6), 10) Then Return $eWizard ;Check if slot is Wizard
+   If _ColorCheck(_GetPixelColor(68 + (72 * $position), 585), Hex(0x68ACD4, 6), 5) Then Return $eCastle ;Check if slot is Clan Castle
+   If _ColorCheck(_GetPixelColor(68 + (72 * $position), 585), Hex(0x68ACD2, 6), 5) Then Return $eCastle ;Check if slot is Clan Castle
    If _ColorCheck($TroopPixel, Hex(0x955630, 6), 20) Then Return $eHSpell ;Check if slot is Heal Spell
    If _ColorCheck($TroopPixel, Hex(0x705C60, 6), 20) Then Return $eRSpell ;Check if slot is Rage Spell
    If _ColorCheck($TroopPixel, Hex(0xF8EB79, 6), 20) Then Return $eKing ;Check if slot is King
@@ -91,11 +93,12 @@ Func IdentifyTroopKind($position)
    endif
    if $position >= 7 then
 	$CCPixel = _GetPixelColor(70 + (72 * $position), 585)
-   endif
-   If _ColorCheck($CCPixel, Hex(0x662CE6, 6), 10) Then Return $eQueen ;Check if slot is Queen <= level 10 Or Check if slot is Queen > level 10
-   If _ColorCheck($CCPixel, Hex(0x68ACD0, 6), 10) Then Return $eCastle ;Check if slot is Clan Castle
-   ;If _ColorCheck(_GetPixelColor(68 + (72 * $position), 585), Hex(0x68ACD2, 6), 5) Then Return $eCastle ;Check if slot is Clan Castle
-   If _ColorCheck(_GetPixelColor(68 + (72 * $position), 632), Hex(0x0426EC, 6), 5) Then Return $eLSpell ;Check if slot is Lightning Spell
-   Return -1
+    endif
+  If _ColorCheck($CCPixel, Hex(0x662CE6, 6), 10) Then Return $eQueen ;Check if slot is Queen <= level 10 Or Check if slot is Queen > level 10
+  ;If _ColorCheck($CCPixel, Hex(0x68ACD0, 6), 10) Then Return $eCastle ;Check if slot is Clan Castle
+  ;If _ColorCheck(_GetPixelColor(68 + (72 * $position), 585), Hex(0x68ACD2, 6), 5) Then Return $eCastle ;Check if slot is Clan Castle
+
+  If _ColorCheck(_GetPixelColor(68 + (72 * $position), 632), Hex(0x0426EC, 6), 5) Then Return $eLSpell ;Check if slot is Lightning Spell
+  Return -1
 EndFunc
 
