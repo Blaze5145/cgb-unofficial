@@ -140,6 +140,10 @@ If $OptBullyMode = 1 Then SETLOG("THBully Combo @" & $ATBullyMode & " SearchCoun
 		EndIf
 	WEnd
 
+	If GUICtrlRead($chkPushBulletEnabled) = $GUI_CHECKED And GUICtrlRead($txtPushBulletToken) <> "" And GUICtrlRead($chkPushMatchFound) = $GUI_CHECKED Then
+	    _Push("PushBot Match Found", "[G]: " & $searchGold & ", [E]: " & $searchElixir & ", [D]: " & $searchDark & ", [T]: " & $searchTrophy & ", Skipped: " & $iSkipped)
+    EndIf
+
 	If GUICtrlRead($chkAlertSearch) = $GUI_CHECKED Then
 		TrayTip("Match Found!", "Gold: " & $searchGold & "; Elixir: " & $searchElixir & "; Dark: " & $searchDark & "; Trophy: " & $searchTrophy, "", 0)
 		If FileExists(@WindowsDir & "\media\Festival\Windows Exclamation.wav") Then

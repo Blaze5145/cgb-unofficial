@@ -49,7 +49,7 @@ Func readConfig() ;Reads config and sets it to the variables
 	    $iRandomspeedatk = IniRead($config, "attack", "randomatk", "0")
 
 	    $chkRedArea = IniRead($config, "attack", "deployRedArea", "0")
-	    
+
 		$KingAttack[0] = IniRead($config, "attack", "king-dead", "0")
 		$KingAttack[2] = IniRead($config, "attack", "king-all", "0")
 
@@ -148,6 +148,12 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$SFPos[0] = IniRead($config, "other", "xspellfactory", "-1")
 		$SFPos[1] = IniRead($config, "other", "yspellfactory", "-1")
+
+		;PushBullet Settings
+		$PushBulletEnabled = IniRead($config, "PushBullet", "PushBulletEnabled", "0")
+		$PushBulletToken = IniRead($config, "PushBullet", "PushBulletToken", "")
+		$PushBulletVillageReport = IniRead($config, "PushBullet", "PushBulletVillageReport", "0")
+		$PushBulletMatchFound = IniRead($config, "PushBullet", "PushBulletMatchFound", "0")
 
 		;Upgrade Settings--------------------------------------------------------------------------
 		$itxtUpgrMinGold = IniRead($config, "upgrade", "minupgrgold", "0")

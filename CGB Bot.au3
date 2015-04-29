@@ -98,9 +98,9 @@ Func runBot() ;Bot that runs everything in order
 				checkMainScreen(False)
 				If $Restart = True Then ContinueLoop
 			VillageReport()
-				_Push("Stats You :", "Start [G]: " & $GoldStart & " [E]: " & $ElixirStart & " [D]: " & $DarkStart & "  Now [G]: " & $GoldVillage _
-				& " [E]: " & $ElixirVillage & " [D]: " & $DarkVillage & " Start [T]: " & $TrophyStart & " Now [T]: " & $TrophyVillage & " [GEM]: " _
-				& $GemCount & " [No. of Free Builders]: " & $FreeBuilder & " [No. of Wall Up]: G:" & $wallgoldmake & "/E:" & $wallelixirmake)
+				If GUICtrlRead($chkPushBulletEnabled) = $GUI_CHECKED And GUICtrlRead($txtPushBulletToken) <> "" And GUICtrlRead($chkPushVillageReport) = $GUI_CHECKED Then
+				   _Push("PushBot Village Report", "Start [G]: " & $GoldStart & ", [E]: " & $ElixirStart & ", [D]: " & $DarkStart & "\nNow [G]: " & $GoldVillage & ", [E]: " & $ElixirVillage & ", [D]: " & $DarkVillage & "\nStart [T]: " & $TrophyStart & "\nNow [T]: " & $TrophyVillage & "\n[GEM]: " & $GemCount & "\n[No. of Free Builders]: " & $FreeBuilder & "\n[No. of Wall Up]: G:" & $wallgoldmake & "/E:" & $wallelixirmake)
+				EndIf
 				If _Sleep(1000) Then Return
 				checkMainScreen(False)
 				If $Restart = True Then ContinueLoop

@@ -108,7 +108,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	EndIf
 
 	;Attack Settings-------------------------------------------------------------------------
-	_GUICtrlComboBox_SetCurSel($cmbDeployB, $deployBSettings) 
+	_GUICtrlComboBox_SetCurSel($cmbDeployB, $deployBSettings)
 	_GUICtrlComboBox_SetCurSel($cmbDeployTH, $deployTHSettings)
 	_GUICtrlComboBox_SetCurSel($cmbDeployA, $deployASettings)
 	_GUICtrlComboBox_SetCurSel($cmbTroopComp, $icmbTroopComp)
@@ -330,8 +330,37 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 
 	;location of TH, CC, Army Camp, Barrack and Spell Fact. not Applied, only read
 
+	;PushBullet Settings
+	If $PushBulletEnabled = 1 Then
+		GUICtrlSetState($chkPushBulletEnabled, $GUI_CHECKED)
+
+		GUICtrlSetState($txtPushBulletToken, $GUI_ENABLE)
+		GUICtrlSetState($chkPushVillageReport, $GUI_ENABLE)
+		GUICtrlSetState($chkPushMatchFound, $GUI_ENABLE)
+	Else
+		GUICtrlSetState($chkPushBulletEnabled, $GUI_UNCHECKED)
+
+		GUICtrlSetState($txtPushBulletToken, $GUI_DISABLE)
+		GUICtrlSetState($chkPushVillageReport, $GUI_DISABLE)
+		GUICtrlSetState($chkPushMatchFound, $GUI_DISABLE)
+	EndIf
+
+	GUICtrlSetData($txtPushBulletToken, $PushBulletToken)
+
+	If $PushBulletVillageReport = 1 Then
+		GUICtrlSetState($chkPushVillageReport, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkPushVillageReport, $GUI_UNCHECKED)
+	EndIf
+
+	If $PushBulletMatchFound = 1 Then
+		GUICtrlSetState($chkPushMatchFound, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkPushMatchFound, $GUI_UNCHECKED)
+	EndIf
+
 	;Upgrade Settings--------------------------------------------------------------------------
 	GUICtrlSetData($txtUpgrMinGold, $itxtUpgrMinGold)
 	GUICtrlSetData($txtUpgrMinElixir, $itxtUpgrMinElixir)
-	
+
 EndFunc   ;==>applyConfig

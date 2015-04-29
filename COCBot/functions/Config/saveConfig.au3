@@ -317,6 +317,27 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "other", "ySpellfactory", $SFPos[1])
 	EndIf
 
+	;PushBullet Settings
+	If GUICtrlRead($chkPushBulletEnabled) = $GUI_CHECKED Then
+		IniWrite($config, "PushBullet", "PushBulletEnabled", 1)
+	Else
+		IniWrite($config, "PushBullet", "PushBulletEnabled", 0)
+    EndIf
+
+	IniWrite($config, "PushBullet", "PushBulletToken", GUICtrlRead($txtPushBulletToken))
+
+	If GUICtrlRead($chkPushVillageReport) = $GUI_CHECKED Then
+		IniWrite($config, "PushBullet", "PushBulletVillageReport", 1)
+	Else
+		IniWrite($config, "PushBullet", "PushBulletVillageReport", 0)
+    EndIf
+
+	If GUICtrlRead($chkPushMatchFound) = $GUI_CHECKED Then
+		IniWrite($config, "PushBullet", "PushBulletMatchFound", 1)
+	Else
+		IniWrite($config, "PushBullet", "PushBulletMatchFound", 0)
+    EndIf
+
 	;Upgrade Settings--------------------------------------------------------------------------
 	IniWrite($config, "upgrade", "minupgrgold", GUICtrlRead($txtUpgrMinGold))
 	IniWrite($config, "upgrade", "minupgrelixir", GUICtrlRead($txtUpgrMinElixir))

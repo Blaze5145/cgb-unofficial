@@ -48,7 +48,7 @@ EndFunc   ;==>GUIControl
 
 Func SetTime()
     Local $time = _TicksToTime(Int(TimerDiff($sTimer)), $hour, $min, $sec)
-	If _GUICtrlTab_GetCurSel($tabMain) = 8 Then GUICtrlSetData($lblresultruntime, StringFormat("%02i:%02i:%02i", $hour, $min, $sec))
+	If _GUICtrlTab_GetCurSel($tabMain) = 7 Then GUICtrlSetData($lblresultruntime, StringFormat("%02i:%02i:%02i", $hour, $min, $sec))
 EndFunc   ;==>SetTime
 
 Func btnStart()
@@ -110,6 +110,13 @@ Func btnStart()
 
 			    $sTimer = TimerInit()
 			    AdlibRegister("SetTime", 1000)
+
+				If GUICtrlRead($chkPushBulletEnabled) = $GUI_CHECKED And GUICtrlRead($txtPushBulletToken) <> "" Then
+				    SetLog("Login PushBullet...", $COLOR_BLUE)
+					_PushBullet()
+					Sleep(1000)
+				EndIf
+
 				runBot()
 		EndIf
 		Else
@@ -960,6 +967,20 @@ Func sldVSDelay()
 		GUICtrlSetData($lbltxtVSDelay, "second")
 	Else
 		GUICtrlSetData($lbltxtVSDelay, "seconds")
+	EndIf
+EndFunc
+
+Func chkPushBulletEnabled()
+	If GUICtrlRead($chkPushBulletEnabled) = $GUI_CHECKED Then
+		GUICtrlSetState($chkPushVillageReport, $GUI_ENABLE)
+		GUICtrlSetState($chkPushMatchFound, $GUI_ENABLE)
+
+		GUICtrlSetState($txtPushBulletToken, $GUI_ENABLE)
+	Else
+		GUICtrlSetState($chkPushVillageReport, $GUI_DISABLE)
+		GUICtrlSetState($chkPushMatchFound, $GUI_DISABLE)
+
+		GUICtrlSetState($txtPushBulletToken, $GUI_DISABLE)
 	EndIf
 EndFunc
 
