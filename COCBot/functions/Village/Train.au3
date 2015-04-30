@@ -107,7 +107,7 @@ Func Train()
 		$CurMinion = GUICtrlRead($txtNumMinions)
 		$CurWB = GUICtrlRead($txtNumWallbreakers)
 		$CurWizard = GUICtrlRead($txtNumWizards)
-		$CurBalloon = GUICtrlRead($txtNumBalloon)
+		$CurBalloon = GUICtrlRead($txtNumBalloons)
 		$CurGoblin = ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtGoblins)/100
 		$CurGoblin = Round($CurGoblin)
 		$CurBarb = ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtBarbarians)/100
@@ -120,7 +120,7 @@ Func Train()
 		$CurMinion += GUICtrlRead($txtNumMinions)
 		$CurWB += GUICtrlRead($txtNumWallbreakers)
 		$CurWizard = GUICtrlRead($txtNumWizards)
-		$CurBalloon += GUICtrlRead($txtNumBalloon)
+		$CurBalloon += GUICtrlRead($txtNumBalloons)
 		$CurGoblin += ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtGoblins)/100
 		$CurGoblin = Round($CurGoblin)
 		$CurBarb += ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtBarbarians)/100
@@ -256,7 +256,7 @@ Func Train()
 				  $troopFirstWizard = Number(getOther(171 + 107 * 1, 384, "Barrack"))
 			   endif
 			EndIf
-		   If GUICtrlRead($txtNumBalloon) <> "0" Then
+		   If GUICtrlRead($txtNumBalloons) <> "0" Then
 			  $troopFirstBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
 			  if $troopFirstBalloon = 0 then
 				  $troopFirstBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
@@ -355,7 +355,11 @@ Func Train()
 			   endif
 		   EndIf
 
+<<<<<<< HEAD
 		   If GUICtrlRead($txtNumBalloon) <> "0" And $CurBalloon > 0 Then
+=======
+		   If GUICtrlRead($txtNumBalloons) <> "0" And $CurBalloon > 0 Then
+>>>>>>> origin/master
 			   If $CurBalloon > 0 Then
 				   if $BalloonEBarrack = 0 then
 					    TrainIt($eBalloon, 1)
@@ -407,7 +411,7 @@ Func Train()
 				  $troopSecondWizard = Number(getOther(171 + 107 * 1, 384, "Barrack"))
 			   endif
 			   EndIf
-		   If GUICtrlRead($txtNumBalloon) <> "0" Then
+		   If GUICtrlRead($txtNumBalloons) <> "0" Then
 			  $troopSecondBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
 			  if $troopSecondBalloon = 0 then
 				  $troopSecondBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
@@ -450,7 +454,11 @@ Func Train()
 			   $CurWizard -= ($troopSecondWizard - $troopFirstWizard)
 		   endif
 
+<<<<<<< HEAD
 			if $troopSecondBalloon > $troopFirstBalloon and GUICtrlRead($txtNumBalloon) <> "0" then
+=======
+			if $troopSecondBalloon > $troopFirstBalloon and GUICtrlRead($txtNumBalloons) <> "0" then
+>>>>>>> origin/master
 			   $ArmyComp += ($troopSecondBalloon - $troopFirstBalloon)*5
 			   $CurBalloon -= ($troopSecondBalloon - $troopFirstBalloon)
 			endif
