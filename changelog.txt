@@ -1,3 +1,28 @@
+29-04-2015:
+Bug Fixed:
+1)PushBullet function call
+2)LazyMan Mod expression by rhendywp
+3)Runtime display
+4)CC detection by Boju PR by shariqriaz
+Mods:
+1)Pushbullet GUI by IndraFer
+2)Out of Sync count by cocmady
+28-04-2015:
+Bug Fixed:
+1)TH Bully options not getting enabled
+2)Wallbreakers detected as minions by shariqriaz
+27-04-2015:
+Bug Fixed:
+1) Merged Wallbreaker training by shariqriaz
+Mods:
+1)Merged Balloons mod by schadis
+2)Merged Attack dead bases and th bully with different gold/elixir limits by cocmady, PR by shariqriaz
+3)Screenshot of loot now contains number of searchs as part of the filename by sardo
+26-04-2015:
+Bugs Fixed:
+1)Attacking bug in red area deployment
+Mods:
+1)Merged latest version of TH Snipe by barracoda
 25-04-2015:
 Bugs Fixed:
 1) Attack wait by knowjack
@@ -11,7 +36,6 @@ Mods:
 4) Pushbullet v2.0 by Boju
 5) TH Snipe by barracoda
 6) Kick after donate by scarface008
-
 Initial Bot Commit - 24-04-2015:
 Bugs Fixed:
 1) Custom Army by barracoda

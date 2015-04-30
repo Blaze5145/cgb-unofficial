@@ -30,6 +30,8 @@ Func GUIControl($hWind, $iMsg, $wParam, $lParam)
  					If $RunState Then btnPause()
 				Case $btnResume
 					If $RunState Then btnResume()
+				Case $btnAtkNow
+					If $RunState Then btnAtkNow() ;Attack Now MOD
 				Case $btnHide
 					If $RunState Then btnHide()
 			EndSwitch
@@ -93,6 +95,7 @@ Func btnStart()
 				SetLog("Bot is starting...", $COLOR_GREEN)
 
 				$RunState = True
+				$AttackNow = False ;Attack Now MOD
 				For $i = $FirstControlToHide To $LastControlToHide ; Save state of all controls on tabs
 					If $i = $tabGeneral or $i = $tabSearch or $i = $tabAttack or $i = $tabAttackAdv or $i = $tabDonate or $i = $tabTroops or $i = $tabMisc or $i = $tabUpgrades then $i += 1 ; exclude tabs
 					$iPrevState[$i] = GUICtrlGetState($i)
@@ -107,6 +110,8 @@ Func btnStart()
 				GUICtrlSetState($btnStop, $GUI_SHOW)
  				GUICtrlSetState($btnPause, $GUI_SHOW)
 				GUICtrlSetState($btnResume, $GUI_HIDE)
+				GUICtrlSetState($btnAtkNow, $GUI_SHOW) ;Attack Now MOD
+				GUICtrlSetState($btnAtkNow, $GUI_DISABLE) ;Attack Now MOD
 
 			    $sTimer = TimerInit()
 			    AdlibRegister("SetTime", 1000)
@@ -128,10 +133,11 @@ Func btnStart()
 		EndIf
 EndFunc   ;==>btnStart
 
-	Func btnStop()
+Func btnStop()
 	If $RunState Then
 		$RunState = False
 		;$FirstStart = true
+		$AttackNow = False ;Attack Now MOD
 		EnableBS($HWnD, $SC_MINIMIZE)
 		EnableBS($HWnD, $SC_CLOSE)
 		For $i = $FirstControlToHide To $LastControlToHide ; Restore previous state of controls
@@ -144,6 +150,8 @@ EndFunc   ;==>btnStart
 		GUICtrlSetState($btnStop, $GUI_HIDE)
  		GUICtrlSetState($btnPause, $GUI_HIDE)
 		GUICtrlSetState($btnResume, $GUI_HIDE)
+		GUICtrlSetState($btnAtkNow, $GUI_HIDE) ;Attack Now MOD
+		GUICtrlSetState($btnAtkNow, $GUI_DISABLE) ;Attack Now MOD
 
 		AdlibUnRegister("SetTime")
 		_BlockInputEx(0, "", "", $HWnD)
@@ -169,6 +177,11 @@ Func Check()
 	Check()
 	EndIf
 EndFunc
+
+Func btnAtkNow() ;Attack Now MOD
+	$AttackNow = True
+	GUICtrlSetState($btnAtkNow, $GUI_DISABLE)
+EndFunc   ;==>btnAtkNow
 
 Func btnLocateUpgrade1()
 	$RunState = True
@@ -364,6 +377,7 @@ Func SetComboTroopComp()
 			GUICtrlSetState($txtNumGiants, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWallbreakers, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWizards, $GUI_ENABLE)
+			GUICtrlSetState($txtNumBalloons, $GUI_ENABLE)
 			GUICtrlSetState($txtNumMinions, $GUI_ENABLE)
 			GUICtrlSetState($txtNumHogs, $GUI_ENABLE)
 
@@ -377,11 +391,13 @@ Func SetComboTroopComp()
 			_GUICtrlEdit_SetReadOnly($txtNumGiants, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWallbreakers, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWizards, True)
+			_GUICtrlEdit_SetReadOnly($txtNumBalloons, True)
 			_GUICtrlEdit_SetReadOnly($txtNumMinions, True)
 			_GUICtrlEdit_SetReadOnly($txtNumHogs, True)
 
 			GUICtrlSetData($txtNumGiants, "0")
 			GUICtrlSetData($txtNumWallbreakers, "0")
+			GUICtrlSetData($txtNumBalloons, "0")
 			GUICtrlSetData($txtNumWizards, "0")
 			GUICtrlSetData($txtNumMinions, "0")
 			GUICtrlSetData($txtNumHogs, "0")
@@ -397,6 +413,7 @@ Func SetComboTroopComp()
 			GUICtrlSetState($txtNumGiants, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWallbreakers, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWizards, $GUI_ENABLE)
+			GUICtrlSetState($txtNumBalloons, $GUI_ENABLE)
 			GUICtrlSetState($txtNumMinions, $GUI_ENABLE)
 			GUICtrlSetState($txtNumHogs, $GUI_ENABLE)
 
@@ -406,6 +423,7 @@ Func SetComboTroopComp()
 			_GUICtrlEdit_SetReadOnly($txtNumGiants, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWallbreakers, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWizards, True)
+			_GUICtrlEdit_SetReadOnly($txtNumBalloons, True)
 			_GUICtrlEdit_SetReadOnly($txtNumMinions, True)
 			_GUICtrlEdit_SetReadOnly($txtNumHogs, True)
 
@@ -416,6 +434,7 @@ Func SetComboTroopComp()
 			GUICtrlSetData($txtNumGiants, "0")
 			GUICtrlSetData($txtNumWallbreakers, "0")
 			GUICtrlSetData($txtNumWizards, "0")
+			GUICtrlSetData($txtNumBalloons, "0")
 			GUICtrlSetData($txtNumMinions, "0")
 			GUICtrlSetData($txtNumHogs, "0")
 		Case 2
@@ -430,6 +449,7 @@ Func SetComboTroopComp()
 			GUICtrlSetState($txtNumGiants, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWallbreakers, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWizards, $GUI_ENABLE)
+			GUICtrlSetState($txtNumBalloons, $GUI_ENABLE)
 			GUICtrlSetState($txtNumMinions, $GUI_ENABLE)
 			GUICtrlSetState($txtNumHogs, $GUI_ENABLE)
 
@@ -439,6 +459,7 @@ Func SetComboTroopComp()
 			_GUICtrlEdit_SetReadOnly($txtNumGiants, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWallbreakers, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWizards, True)
+			_GUICtrlEdit_SetReadOnly($txtNumBalloons, True)
 			_GUICtrlEdit_SetReadOnly($txtNumMinions, True)
 			_GUICtrlEdit_SetReadOnly($txtNumHogs, True)
 
@@ -449,6 +470,7 @@ Func SetComboTroopComp()
 			GUICtrlSetData($txtNumGiants, "0")
 			GUICtrlSetData($txtNumWallbreakers, "0")
 			GUICtrlSetData($txtNumWizards, "0")
+			GUICtrlSetData($txtNumBalloons, "0")
 			GUICtrlSetData($txtNumMinions, "0")
 			GUICtrlSetData($txtNumHogs, "0")
 		Case 3
@@ -463,6 +485,7 @@ Func SetComboTroopComp()
 			GUICtrlSetState($txtNumGiants, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWallbreakers, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWizards, $GUI_ENABLE)
+			GUICtrlSetState($txtNumBalloons, $GUI_ENABLE)
 			GUICtrlSetState($txtNumMinions, $GUI_ENABLE)
 			GUICtrlSetState($txtNumHogs, $GUI_ENABLE)
 
@@ -472,6 +495,7 @@ Func SetComboTroopComp()
 			_GUICtrlEdit_SetReadOnly($txtNumGiants, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWallbreakers, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWizards, True)
+			_GUICtrlEdit_SetReadOnly($txtNumBalloons, True)
 			_GUICtrlEdit_SetReadOnly($txtNumMinions, True)
 			_GUICtrlEdit_SetReadOnly($txtNumHogs, True)
 
@@ -482,6 +506,7 @@ Func SetComboTroopComp()
 			GUICtrlSetData($txtNumGiants, "0")
 			GUICtrlSetData($txtNumWallbreakers, "0")
 			GUICtrlSetData($txtNumWizards, "0")
+			GUICtrlSetData($txtNumBalloons, "0")
 			GUICtrlSetData($txtNumMinions, "0")
 			GUICtrlSetData($txtNumHogs, "0")
 		Case 4
@@ -496,6 +521,7 @@ Func SetComboTroopComp()
 			GUICtrlSetState($txtNumGiants, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWallbreakers, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWizards, $GUI_ENABLE)
+			GUICtrlSetState($txtNumBalloons, $GUI_ENABLE)
 			GUICtrlSetState($txtNumMinions, $GUI_ENABLE)
 			GUICtrlSetState($txtNumHogs, $GUI_ENABLE)
 
@@ -504,6 +530,7 @@ Func SetComboTroopComp()
 			_GUICtrlEdit_SetReadOnly($txtGoblins, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWallbreakers, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWizards, True)
+			_GUICtrlEdit_SetReadOnly($txtNumBalloons, True)
 			_GUICtrlEdit_SetReadOnly($txtNumGiants, False)
 			_GUICtrlEdit_SetReadOnly($txtNumMinions, True)
 			_GUICtrlEdit_SetReadOnly($txtNumHogs, True)
@@ -515,6 +542,7 @@ Func SetComboTroopComp()
 			GUICtrlSetData($txtNumGiants, $GiantsComp)
 			GUICtrlSetData($txtNumWallbreakers, "0")
 			GUICtrlSetData($txtNumWizards, "0")
+			GUICtrlSetData($txtNumBalloons, "0")
 			GUICtrlSetData($txtNumMinions, "0")
 			GUICtrlSetData($txtNumHogs, "0")
 		Case 5
@@ -529,6 +557,7 @@ Func SetComboTroopComp()
 			GUICtrlSetState($txtNumGiants, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWallbreakers, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWizards, $GUI_ENABLE)
+			GUICtrlSetState($txtNumBalloons, $GUI_ENABLE)
 			GUICtrlSetState($txtNumMinions, $GUI_ENABLE)
 			GUICtrlSetState($txtNumHogs, $GUI_ENABLE)
 
@@ -537,6 +566,7 @@ Func SetComboTroopComp()
 			_GUICtrlEdit_SetReadOnly($txtGoblins, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWallbreakers, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWizards, True)
+			_GUICtrlEdit_SetReadOnly($txtNumBalloons, True)
 			_GUICtrlEdit_SetReadOnly($txtNumGiants, False)
 			_GUICtrlEdit_SetReadOnly($txtNumMinions, True)
 			_GUICtrlEdit_SetReadOnly($txtNumHogs, True)
@@ -548,6 +578,7 @@ Func SetComboTroopComp()
 			GUICtrlSetData($txtNumGiants, $GiantsComp)
 			GUICtrlSetData($txtNumWallbreakers, "0")
 			GUICtrlSetData($txtNumWizards, "0")
+			GUICtrlSetData($txtNumBalloons, "0")
 			GUICtrlSetData($txtNumMinions, "0")
 			GUICtrlSetData($txtNumHogs, "0")
 		Case 6
@@ -562,6 +593,7 @@ Func SetComboTroopComp()
 			GUICtrlSetState($txtNumGiants, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWallbreakers, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWizards, $GUI_ENABLE)
+			GUICtrlSetState($txtNumBalloons, $GUI_ENABLE)
 			GUICtrlSetState($txtNumMinions, $GUI_ENABLE)
 			GUICtrlSetState($txtNumHogs, $GUI_ENABLE)
 
@@ -571,6 +603,7 @@ Func SetComboTroopComp()
 			_GUICtrlEdit_SetReadOnly($txtNumGiants, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWallbreakers, True)
 			_GUICtrlEdit_SetReadOnly($txtNumWizards, True)
+			_GUICtrlEdit_SetReadOnly($txtNumBalloons, True)
 			_GUICtrlEdit_SetReadOnly($txtNumMinions, True)
 			_GUICtrlEdit_SetReadOnly($txtNumHogs, True)
 
@@ -581,6 +614,7 @@ Func SetComboTroopComp()
 			GUICtrlSetData($txtNumGiants, "0")
 			GUICtrlSetData($txtNumWallbreakers, "0")
 			GUICtrlSetData($txtNumWizards, "0")
+			GUICtrlSetData($txtNumBalloons, "0")
 			GUICtrlSetData($txtNumMinions, "0")
 			GUICtrlSetData($txtNumHogs, "0")
 		Case 7
@@ -595,6 +629,7 @@ Func SetComboTroopComp()
 			GUICtrlSetState($txtNumGiants, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWallbreakers, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWizards, $GUI_ENABLE)
+			GUICtrlSetState($txtNumBalloons, $GUI_ENABLE)
 			GUICtrlSetState($txtNumMinions, $GUI_ENABLE)
 			GUICtrlSetState($txtNumHogs, $GUI_ENABLE)
 
@@ -603,7 +638,8 @@ Func SetComboTroopComp()
 			_GUICtrlEdit_SetReadOnly($txtGoblins, True)
 			_GUICtrlEdit_SetReadOnly($txtNumGiants, False)
 			_GUICtrlEdit_SetReadOnly($txtNumWallbreakers, False)
-			_GUICtrlEdit_SetReadOnly($txtNumWizards, False)
+			_GUICtrlEdit_SetReadOnly($txtNumWizards, True)
+			_GUICtrlEdit_SetReadOnly($txtNumBalloons, True)
 			_GUICtrlEdit_SetReadOnly($txtNumMinions, True)
 			_GUICtrlEdit_SetReadOnly($txtNumHogs, True)
 
@@ -613,9 +649,10 @@ Func SetComboTroopComp()
 
 			GUICtrlSetData($txtNumGiants, $GiantsComp)
 			GUICtrlSetData($txtNumWallbreakers, $WBComp)
-			GUICtrlSetData($txtNumWizards, $WizardsComp)
-			GUICtrlSetData($txtNumMinions, $MinionsComp)
-			GUICtrlSetData($txtNumHogs, $HogsComp)
+			GUICtrlSetData($txtNumWizards, "0")
+			GUICtrlSetData($txtNumBalloons, "0")
+			GUICtrlSetData($txtNumMinions, "0")
+			GUICtrlSetData($txtNumHogs, "0")
 		Case 8
 			GUICtrlSetState($cmbBarrack1, $GUI_ENABLE)
 			GUICtrlSetState($cmbBarrack2, $GUI_ENABLE)
@@ -628,6 +665,7 @@ Func SetComboTroopComp()
 			GUICtrlSetState($txtNumGiants, $GUI_DISABLE)
 			GUICtrlSetState($txtNumWallbreakers, $GUI_DISABLE)
 			GUICtrlSetState($txtNumWizards, $GUI_DISABLE)
+			GUICtrlSetState($txtNumBalloons, $GUI_DISABLE)
 			GUICtrlSetState($txtNumMinions, $GUI_DISABLE)
 			GUICtrlSetState($txtNumHogs, $GUI_DISABLE)
 		Case 9
@@ -642,6 +680,7 @@ Func SetComboTroopComp()
 			GUICtrlSetState($txtNumGiants, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWallbreakers, $GUI_ENABLE)
 			GUICtrlSetState($txtNumWizards, $GUI_ENABLE)
+			GUICtrlSetState($txtNumBalloons, $GUI_ENABLE)
 			GUICtrlSetState($txtNumMinions, $GUI_ENABLE)
 			GUICtrlSetState($txtNumHogs, $GUI_ENABLE)
 
@@ -651,6 +690,7 @@ Func SetComboTroopComp()
 			_GUICtrlEdit_SetReadOnly($txtNumGiants, False)
 			_GUICtrlEdit_SetReadOnly($txtNumWallbreakers, False)
 			_GUICtrlEdit_SetReadOnly($txtNumWizards, False)
+			_GUICtrlEdit_SetReadOnly($txtNumBalloons, False)
 			_GUICtrlEdit_SetReadOnly($txtNumMinions, False)
 			_GUICtrlEdit_SetReadOnly($txtNumHogs, False)
 
@@ -661,10 +701,9 @@ Func SetComboTroopComp()
 			GUICtrlSetData($txtNumGiants, $GiantsComp)
 			GUICtrlSetData($txtNumWallbreakers, $WBComp)
 			GUICtrlSetData($txtNumWizards, $WizardsComp)
+			GUICtrlSetData($txtNumBalloons, $BalloonsComp)
 			GUICtrlSetData($txtNumMinions, $MinionsComp)
 			GUICtrlSetData($txtNumHogs, $HogsComp)
-			GUICtrlSetState($txtNumBalloon, $GUI_ENABLE)
-			_GUICtrlEdit_SetReadOnly($txtNumBalloon, False)
 	EndSwitch
 	lblTotalCount()
 EndFunc   ;==>SetComboTroopComp

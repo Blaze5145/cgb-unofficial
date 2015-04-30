@@ -107,7 +107,7 @@ Func Train()
 		$CurMinion = GUICtrlRead($txtNumMinions)
 		$CurWB = GUICtrlRead($txtNumWallbreakers)
 		$CurWizard = GUICtrlRead($txtNumWizards)
-		$CurBalloon = GUICtrlRead($txtNumBalloon)
+		$CurBalloon = GUICtrlRead($txtNumBalloons)
 		$CurGoblin = ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtGoblins)/100
 		$CurGoblin = Round($CurGoblin)
 		$CurBarb = ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtBarbarians)/100
@@ -120,7 +120,7 @@ Func Train()
 		$CurMinion += GUICtrlRead($txtNumMinions)
 		$CurWB += GUICtrlRead($txtNumWallbreakers)
 		$CurWizard = GUICtrlRead($txtNumWizards)
-		$CurBalloon += GUICtrlRead($txtNumBalloon)
+		$CurBalloon += GUICtrlRead($txtNumBalloons)
 		$CurGoblin += ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtGoblins)/100
 		$CurGoblin = Round($CurGoblin)
 		$CurBarb += ($TotalCamp-(GUICtrlRead($txtNumWizards)*4)-(GUICtrlRead($txtNumMinions)*2)-(GUICtrlRead($txtNumHogs)*5)-(GUICtrlRead($txtNumGiants)*5)-(GUICtrlRead($txtNumWallbreakers)*2))*GUICtrlRead($txtBarbarians)/100
@@ -184,7 +184,7 @@ Func Train()
 	If _Sleep(1000) Then return
 	Local $NextPos = _PixelSearch(749, 333, 787, 349, Hex(0xF08C40, 6), 5)
     Local $PrevPos = _PixelSearch(70, 336, 110, 351, Hex(0xF08C40, 6), 5)
-	
+
 	Local $iBarrHere
 	$iBarrHere = 0
 	while isBarrack()
@@ -201,7 +201,7 @@ Func Train()
 	If _Sleep(1000) Then return
 	_CaptureRegion()
 	If _Sleep(10) Then return
-	
+
 	Local $IsTraining = true
 	if _GUICtrlComboBox_GetCurSel($cmbTroopComp) = 8 then
 		while isBarrack()
@@ -256,7 +256,7 @@ Func Train()
 				  $troopFirstWizard = Number(getOther(171 + 107 * 1, 384, "Barrack"))
 			   endif
 			EndIf
-		   If GUICtrlRead($txtNumBalloon) <> "0" Then
+		   If GUICtrlRead($txtNumBalloons) <> "0" Then
 			  $troopFirstBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
 			  if $troopFirstBalloon = 0 then
 				  $troopFirstBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
@@ -354,8 +354,8 @@ Func Train()
 				   endif
 			   endif
 		   EndIf
-		   
-		   If GUICtrlRead($txtNumBalloon) <> "0" And $CurBalloon > 0 Then
+
+		   If GUICtrlRead($txtNumBalloons) <> "0" And $CurBalloon > 0 Then
 			   If $CurBalloon > 0 Then
 				   if $BalloonEBarrack = 0 then
 					    TrainIt($eBalloon, 1)
@@ -378,7 +378,7 @@ Func Train()
 				   endif
 			   EndIf
 		   EndIf
-		   
+
 		   If GUICtrlRead($txtGoblins) <> "0" And $CurGoblin > 0 Then
 			   ;If _ColorCheck(_GetPixelColor(261, 366), Hex(0x39D8E0, 6), 20) And $CurGoblin > 0 Then
 			   If $CurGoblin > 0  Then
@@ -407,7 +407,7 @@ Func Train()
 				  $troopSecondWizard = Number(getOther(171 + 107 * 1, 384, "Barrack"))
 			   endif
 			   EndIf
-		   If GUICtrlRead($txtNumBalloon) <> "0" Then
+		   If GUICtrlRead($txtNumBalloons) <> "0" Then
 			  $troopSecondBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
 			  if $troopSecondBalloon = 0 then
 				  $troopSecondBalloon = Number(getOther(171 + 107 * 0, 384, "Barrack"))
@@ -444,13 +444,13 @@ Func Train()
 ;~ 			   SetLog("        Giants: " & ($troopSecondGiant - $troopFirstGiant))
 			   ;SetLog("Remaining Giants: " & $CurGiant , $COLOR_ORANGE)
 		   endif
-		   
+
 		   if $troopSecondWizard > $troopFirstWizard and GUICtrlRead($txtNumWizards) <> "0" then
 			   $ArmyComp += ($troopSecondWizard - $troopFirstWizard)*5
 			   $CurWizard -= ($troopSecondWizard - $troopFirstWizard)
 		   endif
-		   
-			if $troopSecondBalloon > $troopFirstBalloon and GUICtrlRead($txtNumBalloon) <> "0" then
+
+			if $troopSecondBalloon > $troopFirstBalloon and GUICtrlRead($txtNumBalloons) <> "0" then
 			   $ArmyComp += ($troopSecondBalloon - $troopFirstBalloon)*5
 			   $CurBalloon -= ($troopSecondBalloon - $troopFirstBalloon)
 			endif
@@ -651,7 +651,7 @@ Func checkArmyCamp()
 
 	   SetLog("Total Army Camp capacity: " & $CurCamp & "/" & $TotalCamp)
 	   ;If _ColorCheck(_GetPixelColor(692, 208), Hex(0x90DB38, 6), 20) and $ichkFullTroop = 0 Then
-	   
+
 		if ($CurCamp >= ($TotalCamp * $fulltroop/100)) then
 			$fullArmy = True
 		endif

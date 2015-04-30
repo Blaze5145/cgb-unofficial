@@ -50,6 +50,7 @@ Global $sLogPath ; `Will create a new log file every time the start button is pr
 Global $hLogFileHandle
 Global $Restart = False
 Global $RunState = False
+Global $AttackNow = False ; Attack Now MOD
 Global $TakeLootSnapShot = True
 Global $AlertSearch = True
 ;Global $TakeAllTownSnapShot = False
@@ -118,7 +119,7 @@ Global $chklighspell
 Global $TrainSpecial=1 ;0=Only trains after atk. Setting is automatic
 Global $cBarbarian=0,$cArcher=0,$cGoblin=0,$cGiant=0,$cWallbreaker=0,$cWizard=0,$cBalloon=0,$cDragon=0,$cPekka=0,$cMinion=0,$cHogs=0,$cValkyrie=0,$cGolem=0,$cWitch=0
 ;Troop types
-Global Enum $eBarbarian, $eArcher, $eGiant, $eGoblin, $eWallbreaker, $eWizard, $eHog, $eMinion, $eKing, $eQueen, $eCastle, $eLSpell, $eRSpell, $eHSpell, $eBalloon
+Global Enum $eBarbarian, $eArcher, $eGiant, $eGoblin, $eWallbreaker, $eWizard, $eBalloon, $eHog, $eMinion, $eKing, $eQueen, $eCastle, $eLSpell, $eRSpell, $eHSpell
 ;wall
 Global $wallcost
 Global $wallbuild
@@ -205,17 +206,17 @@ Global $WizardsComp
 Global $HogsComp
 Global $MinionsComp
 Global $GoblinsComp
-Global $BalloonComp
+Global $BalloonsComp
 Global $WBComp
 Global $CurBarb = 0
 Global $T[1] = [97]
 Global $CurArch = 0
 Global $CurGiant = 0
 Global $CurWizard = 0
+Global $CurBalloon = 0
 Global $CurGoblin = 0
 Global $CurWB = 0
 Global $CurHog = 0
-Global $CurBalloon = 0
 Global $CurMinion = 0
 Global $ArmyComp
 
