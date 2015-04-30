@@ -2,69 +2,76 @@
 ; Will wait ten seconds until getGold returns a value other than "", if longer than 10 seconds exits
 
 Func GetResources() ;Reads resources
-	Local $i = 0
-	_CaptureRegion()
+ While 1
+Local $i = 0
+_CaptureRegion()
 
-	While getGold(51, 66) = "" ; Loops until gold is readable
-		If _Sleep(1000) Then Return
-		$i += 1
-		If $i >= 10 Then ; wait max 10 sec then Restart Bot
-			SetLog("Cannot locate Next button, Restarting Bot", $COLOR_RED)
-			$Is_ClientSyncError = True
-			$iStuck = 0
-			checkMainScreen()
-			$Restart = True
-			Return
-		EndIf
-	WEnd
+While getGold(51, 66) = "" ; Loops until gold is readable
+If _Sleep(1000) Then ExitLoop (2)
+$i += 1
+If $i >= 10 Then
+   SetLog("Cannot locate Next button, Restarting Bot", $COLOR_RED)
+$Is_ClientSyncError= True ;new line
+GUICtrlSetData($lblresultoutofsync, GUICtrlRead($lblresultoutofsync)+ 1)
+$iStuck=0
+checkMainScreen()
+$Restart = True
+ExitLoop (2)
+EndIf
 
-	If _Sleep(300) Then Return
+WEnd
 
-	$searchGold = getGold(51, 66)
-	$searchElixir = getElixir(51, 66 + 29)
-	$searchTrophy = getTrophy(51, 66 + 90)
+If _Sleep(300) Then ExitLoop (2)
 
-	If $searchGold = $searchGold2 Then $iStuck += 1
-	If $searchGold <> $searchGold2 Then $iStuck = 0
+   $searchTH = checkTownhallADV()
+$searchGold = getGold(51, 66)
+$searchElixir = getElixir(51, 66 + 29)
+$searchTrophy = getTrophy(51, 66 + 90)
 
-	$searchGold2 = $searchGold
-	If $iStuck >= 5 Then
-		SetLog("Cannot locate Next button, Restarting Bot", $COLOR_RED)
-		$Is_ClientSyncError = True
-		$iStuck = 0
-		checkMainScreen()
-		$Restart = True
-		Return
-	EndIf
+If $searchGold = $searchGold2 Then $iStuck += 1
+If $searchGold <> $searchGold2 Then $iStuck = 0
 
-	If $searchTrophy <> "" Then
-		$searchDark = getDarkElixir(51, 66 + 57)
-	Else
-		$searchDark = 0
-		$searchTrophy = getTrophy(51, 66 + 60)
-	EndIf
+$searchGold2 = $searchGold
+if $iStuck>=5 then
+SetLog("Cannot locate Next button, Restarting Bot", $COLOR_RED)
+$Is_ClientSyncError= True ;new line
+GUICtrlSetData($lblresultoutofsync, GUICtrlRead($lblresultoutofsync)+ 1)
+$iStuck=0
+checkMainScreen()
+$Restart = True
+ExitLoop (2)
+   EndIf
 
-	Local $THString = ""
-	If ($OptBullyMode = 1 And $SearchCount >= $ATBullyMode) Or $OptTrophyMode = 1 Or $chkConditions[4] = 1 Or $chkConditions[5] = 1 Then
-		If $chkConditions[5] = 1 Or $OptTrophyMode = 1 Then
-			$searchTH = checkTownhallADV()
-		Else
-			$searchTH = checkTownhall()
-		EndIf
+If $searchTrophy <> "" Then
+$searchDark = getDarkElixir(51, 66 + 57)
+Else
+$searchDark = 0
+$searchTrophy = getTrophy(51, 66 + 60)
+EndIf
 
-		If SearchTownHallLoc() = False And $searchTH <> "-" Then
-			$THLoc = "In"
-		ElseIf $searchTH <> "-" Then
-			$THLoc = "Out"
-		Else
-			$THLoc = $searchTH
-			$THx = 0
-			$THy = 0
-		EndIf
-		$THString = " [TH]:" & StringFormat("%2s", $searchTH) & ", " & $THLoc
-	EndIf
+Local $THString = ""
+   $searchTH = "-"
+If ($OptBullyMode = 1 And $SearchCount >= $ATBullyMode) Or $OptTrophyMode = 1 Or $chkConditions[4] = 1 Or $chkConditions[5] = 1 Then
+If $chkConditions[5] = 1 Or $OptTrophyMode = 1 Then
+$searchTH = checkTownhallADV()
+Else
+$searchTH = checkTownhallADV()
+EndIf
 
-	$SearchCount += 1 ; Counter for number of searches
-	SetLog(StringFormat("%3s", $SearchCount) & "> [G]:" & StringFormat("%7s", $searchGold) & " [E]:" & StringFormat("%7s", $searchElixir) & " [D]:" & StringFormat("%5s", $searchDark) & " [T]:" & StringFormat("%2s", $searchTrophy) & $THString, $COLOR_BLACK, "Lucida Console", 7.5)
+If SearchTownHallLoc() = False And $searchTH <> "-" Then
+$THLoc = "In"
+ElseIf $searchTH <> "-" Then
+$THLoc = "Out"
+Else
+$THLoc = $searchTH
+$THx = 0
+$THy = 0
+EndIf
+$THString = " [TH]:" & StringFormat("%2s", $searchTH) & ", " & $THLoc
+EndIf
 
+$SearchCount += 1 ; Counter for number of searches
+SetLog(StringFormat("%3s", $SearchCount) & "> [G]:" & StringFormat("%7s", $searchGold) & " [E]:" & StringFormat("%7s", $searchElixir) & " [D]:" & StringFormat("%5s", $searchDark) & " [T]:" & StringFormat("%2s", $searchTrophy) & $THString, $COLOR_BLACK, "Lucida Console", 7.5)
+   ExitLoop
+WEnd
 EndFunc   ;==>GetResources

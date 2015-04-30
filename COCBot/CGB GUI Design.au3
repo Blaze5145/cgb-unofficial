@@ -20,7 +20,7 @@ $tabMain = GUICtrlCreateTab(35, 85, 450, 395, BitOR($TCS_MULTILINE, $TCS_BUTTONS
 Local $btnColor = False
 
 ;~ Buttons
-$grpButtons = GUICtrlCreateGroup("", 10, 490, 190, 85)
+$grpButtons = GUICtrlCreateGroup("", 10, 490, 260, 85)
 Local $x = 15, $y = 500
 	$btnStart = GUICtrlCreateButton("Start Bot", $x, $y + 2, 90, 40)
 		GUICtrlSetOnEvent(-1, "btnStart")
@@ -41,18 +41,28 @@ Local $x = 15, $y = 500
 		GUICtrlSetOnEvent(-1, "btnResume")
 		IF $btnColor then GUICtrlSetBkColor(-1,  0xFFA500)
 		GUICtrlSetState(-1, $GUI_HIDE)
-	$btnHide = GUICtrlCreateButton("Hide BS", $x + 10, $y + 45, 70, -1)
+	;$btnHide = GUICtrlCreateButton("Hide BS", $x + 10, $y + 45, 70, -1)
+	$btnHide = GUICtrlCreateButton("Hide BS", $x + 180, -1, 70, 40)
 		$txtTip = "Use this to move the BlueStacks Window out of sight." & @CRLF & "(Not minimized, but hidden)"
 		GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetOnEvent(-1, "btnHide")
 		IF $btnColor Then GUICtrlSetBkColor(-1, 0x22C4F5)
 		GUICtrlSetState(-1, $GUI_DISABLE)
-	$chkBackground = GUICtrlCreateCheckbox("Background" & @CRLF & "Mode", $x + 100, $y + 48, 70, 20, BITOR($BS_MULTILINE, $BS_CENTER))
+	;$chkBackground = GUICtrlCreateCheckbox("Background" & @CRLF & "Mode", $x + 100, $y + 48, 70, 20, BITOR($BS_MULTILINE, $BS_CENTER))
+	$chkBackground = GUICtrlCreateCheckbox("Background" & @CRLF & "Mode", $x + 181, $y + 48, 70, 20, BITOR($BS_MULTILINE, $BS_CENTER))
 		$txtTip = "Check this to ENABLE the Background Mode of the Bot." & @CRLF & "With this you can also hide the BlueStacks window out of sight."
 		GUICtrlSetFont(-1, 7)
 		GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetOnEvent(-1, "chkBackground")
-		GUICtrlSetState(-1, $GUI_UNCHECKED)
+		;GUICtrlSetState(-1, $GUI_UNCHECKED)
+		GUICtrlSetState(-1, $GUI_CHECKED)
+    ;Attack Now MOD
+    $btnAtkNow = GUICtrlCreateButton("ATTACK NOW", $x, $y + 45, 180, -1)
+	    $txtTip = "Use this to FORCE ATTACK when searching village to raid." & @CRLF & "(Delay base on village search delay)"
+		GUICtrlSetTip(-1, $txtTip)
+		GUICtrlSetOnEvent(-1, "btnAtkNow")
+	    GUICtrlSetState(-1, $GUI_HIDE)
+		GUICtrlSetState(-1, $GUI_DISABLE)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 #cs
@@ -602,7 +612,7 @@ $tabTroops = GUICtrlCreateTabItem("  Troops  ")
 			TrayTip("GameBot.org", "Stay Informed Of New Releases" & @CRLF & "http://gamebot.org/latest", 100)
 			GUICtrlSetTip(-1, "Set the type of Army composition." & @CRLF & "'Use Barracks Mode' or 'Custom Army' is for manual compositions.")
 			GUICtrlSetOnEvent(-1, "cmbTroopComp")
-			GUICtrlSetData(-1, "Preset: Archers|Preset: Barbarians|Preset: Goblins|Preset: B.Arch|Preset: B.A.G.G.|Preset: B.A.Giant|Preset: B.A.Goblin|Preset: B.A.G.G.Wall|Use Barrack Mode|Custom Army", "Custom Army")
+			GUICtrlSetData(-1, "Preset: Archers|Preset: Barbarians|Preset: Goblins|Preset: B.Arch|Preset: B.A.G.G.|Preset: B.A.Giant|Preset: B.A.Goblin|Preset: B.A.G.G.Wall|Use Barrack Mode|Custom Army", "Use Barrack Mode")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x += 227
@@ -702,8 +712,8 @@ $tabTroops = GUICtrlCreateTabItem("  Troops  ")
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		 $y +=22
 		GUICtrlCreatePic (@ScriptDir & "\Icons\Balloon.jpg", $x, $y - 3, 20, 20)
-		$lblBalloon = GUICtrlCreateLabel("No. of Balloons:", $x + 25, $y, -1, -1)
-		$txtNumBalloon = GUICtrlCreateInput("0", $x + 130, $y - 5, 55, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
+		$lblBalloons = GUICtrlCreateLabel("No. of Balloons:", $x + 25, $y, -1, -1)
+		$txtNumBalloons = GUICtrlCreateInput("0", $x + 130, $y - 5, 55, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, "Enter the No. of Balloons to make.")
 			GUICtrlSetLimit(-1, 3)
 		 GUICtrlSetState(-1, $GUI_DISABLE)
@@ -1130,52 +1140,55 @@ Local $x = 30, $y = 160
 
 
 	$x = 30
-	$y = 270
-	$grpStatsMisc = GUICtrlCreateGroup("Stats: Misc", $x - 20, $y - 20, 450, 60)
-		$y -=2
-		GUICtrlCreatePic (@ScriptDir & "\Icons\TH1.jpg", $x - 15, $y + 7, 20, 20)
-	 GUICtrlCreatePic (@ScriptDir & "\Icons\TH10.jpg", $x + 6, $y + 7, 20, 20)
-		  $lblvillagesattacked = GUICtrlCreateLabel("Attacked:", $x + 28, $y + 2, -1, 17)
-		  $lblresultvillagesattacked = GUICtrlCreateLabel("0", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
-			$txtTip = "The No. of Villages that were attacked by the Bot."
-			GUICtrlSetTip(-1, $txtTip)
-		$y += 17
-		  $lblvillagesskipped = GUICtrlCreateLabel("Skipped:", $x + 28, $y + 2, -1, 17)
-		  $lblresultvillagesskipped = GUICtrlCreateLabel("0", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
-			$txtTip = "The No. of Villages that were skipped during search by the Bot."
-			GUICtrlSetTip(-1, $txtTip)
-		$x = 180
-		$y = 268
-		GUICtrlCreatePic (@ScriptDir & "\Icons\Trophy.jpg", $x, $y, 15, 15)
-		  $lbltrophiesdropped = GUICtrlCreateLabel("Dropped:", $x + 20, $y + 2, -1, 17)
-		  $lblresulttrophiesdropped = GUICtrlCreateLabel("0", $x + 80, $y + 2, 30, 17, $SS_RIGHT)
-			$txtTip = "The amount of Trophies dropped by the Bot due to Trophy Settings (on Misc Tab)."
-			GUICtrlSetTip(-1, $txtTip)
-		  $y += 17
-		  GUICtrlCreatePic (@ScriptDir & "\Icons\Clock.jpg", $x, $y, 15, 15)
-		  $lblruntime = GUICtrlCreateLabel("Runtime:", $x + 20, $y + 2, -1, 17)
-		  $lblresultruntime = GUICtrlCreateLabel("00:00:00", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
-			$txtTip = "The total Running Time of the Bot."
-			GUICtrlSetTip(-1, $txtTip)
-		$x = 330
-		$y = 268
-		GUICtrlCreatePic (@ScriptDir & "\Icons\Wall.jpg", $x - 3, $y + 7, 20, 20)
-		  $lblwallbygold = GUICtrlCreateLabel("Upg. by Gold:", $x + 20, $y + 2, -1, 17)
-		$lblWallgoldmake =  GUICtrlCreateLabel("0", $x + 55, $y + 2, 60, 17, $SS_RIGHT)
-			$txtTip = "The No. of Walls upgraded by Gold."
-			GUICtrlSetTip(-1, $txtTip)
-		$y += 17
-		$lblwallbyelixir = GUICtrlCreateLabel("Upg. by Elixir:", $x + 20, $y + 2, -1, 17)
-		$lblWallelixirmake =  GUICtrlCreateLabel("0", $x + 55, $y + 2, 60, 17, $SS_RIGHT)
-			$txtTip = "The No. of Walls upgraded by Elixir."
-			GUICtrlSetTip(-1, $txtTip)
-		  ;$lbloutofsync = GUICtrlCreateLabel("Out Of Sync :", 260, 263, 100, 17) ; another stats next post
-		  ;$lblresultoutofsync = GUICtrlCreateLabel("0", 380, 263, 60, 17, $SS_RIGHT) ; another stats next post
-	GUICtrlCreateGroup("", -99, -99, 1, 1)
+   $y = 265
+$grpStatsMisc = GUICtrlCreateGroup("Stats: Misc", $x - 20, $y - 20, 450, 75)
+$y -=2
+GUICtrlCreatePic (@ScriptDir & "\Icons\TH1.jpg", $x - 15, $y + 7, 20, 20)
+   GUICtrlCreatePic (@ScriptDir & "\Icons\TH10.jpg", $x + 6, $y + 7, 20, 20)
+       $lblvillagesattacked = GUICtrlCreateLabel("Attacked:", $x + 28, $y + 2, -1, 17)
+       $lblresultvillagesattacked = GUICtrlCreateLabel("0", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
+$txtTip = "The No. of Villages that were attacked by the Bot."
+GUICtrlSetTip(-1, $txtTip)
+$y += 17
+       $lblvillagesskipped = GUICtrlCreateLabel("Skipped:", $x + 28, $y + 2, -1, 17)
+       $lblresultvillagesskipped = GUICtrlCreateLabel("0", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
+$txtTip = "The No. of Villages that were skipped during search by the Bot."
+GUICtrlSetTip(-1, $txtTip)
+$x = 180
+$y = 263
+GUICtrlCreatePic (@ScriptDir & "\Icons\Trophy.jpg", $x, $y, 15, 15)
+       $lbltrophiesdropped = GUICtrlCreateLabel("Dropped:", $x + 20, $y + 2, -1, 17)
+       $lblresulttrophiesdropped = GUICtrlCreateLabel("0", $x + 80, $y + 2, 30, 17, $SS_RIGHT)
+$txtTip = "The amount of Trophies dropped by the Bot due to Trophy Settings (on Misc Tab)."
+GUICtrlSetTip(-1, $txtTip)
+       $y += 17
+       GUICtrlCreatePic (@ScriptDir & "\Icons\Clock.jpg", $x, $y, 15, 15)
+       $lblruntime = GUICtrlCreateLabel("Runtime:", $x + 20, $y + 2, -1, 17)
+       $lblresultruntime = GUICtrlCreateLabel("00:00:00", $x + 50, $y + 2, 60, 17, $SS_RIGHT)
+$txtTip = "The total Running Time of the Bot."
+GUICtrlSetTip(-1, $txtTip)
+$x = 330
+$y = 263
+GUICtrlCreatePic (@ScriptDir & "\Icons\Wall.jpg", $x - 3, $y + 7, 20, 20)
+       $lblwallbygold = GUICtrlCreateLabel("Upg. by Gold:", $x + 20, $y + 2, -1, 17)
+$lblWallgoldmake =  GUICtrlCreateLabel("0", $x + 55, $y + 2, 60, 17, $SS_RIGHT)
+$txtTip = "The No. of Walls upgraded by Gold."
+GUICtrlSetTip(-1, $txtTip)
+$y += 17
+$lblwallbyelixir = GUICtrlCreateLabel("Upg. by Elixir:", $x + 20, $y + 2, -1, 17)
+$lblWallelixirmake =  GUICtrlCreateLabel("0", $x + 55, $y + 2, 60, 17, $SS_RIGHT)
+$txtTip = "The No. of Walls upgraded by Elixir."
+GUICtrlSetTip(-1, $txtTip)
+$y += 17
+       $lbloutofsync = GUICtrlCreateLabel("Out Of Sync :", $x + 20, $y + 2, -1, 17)
+       $lblresultoutofsync = GUICtrlCreateLabel("0", $x + 55, $y + 2, 60, 17, $SS_RIGHT)
+   $txtTip = "Restarted after Out of Sync Error:"
+GUICtrlSetTip(-1, $txtTip)
+GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	$x = 30
-	$y = 335
-	$grpCredits = GUICtrlCreateGroup("Credits", $x - 20, $y - 20, 450, 170)
+$x = 30
+$y = 340
+$grpCredits = GUICtrlCreateGroup("Credits", $x - 20, $y - 20, 450, 170)
 		$labelGameBotURL = GUICtrlCreateLabel("https://GameBot.org", $x - 5, $y + 5, 430, 20)
 ;~			GUICtrlSetFont(-1, 11, 100, 4)
 			GUICtrlSetColor(-1, 0x0000FF)
