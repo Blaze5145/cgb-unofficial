@@ -151,8 +151,8 @@ Func DonateCC($Check = False)
 	If $scroll = 8 Then ExitLoop(2) ; quit the loop if cannot find any New member after scrolling 8 times
 	WEnd
 	WEnd
-	EndIf
 	SetLog("Finished kicking", $COLOR_RED)
+	EndIf
 	ClickP($TopLeftClient)
 EndFunc   ;==>DonateCC
 
