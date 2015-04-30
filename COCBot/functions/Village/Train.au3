@@ -355,11 +355,7 @@ Func Train()
 			   endif
 		   EndIf
 
-<<<<<<< HEAD
-		   If GUICtrlRead($txtNumBalloon) <> "0" And $CurBalloon > 0 Then
-=======
 		   If GUICtrlRead($txtNumBalloons) <> "0" And $CurBalloon > 0 Then
->>>>>>> origin/master
 			   If $CurBalloon > 0 Then
 				   if $BalloonEBarrack = 0 then
 					    TrainIt($eBalloon, 1)
@@ -454,11 +450,7 @@ Func Train()
 			   $CurWizard -= ($troopSecondWizard - $troopFirstWizard)
 		   endif
 
-<<<<<<< HEAD
-			if $troopSecondBalloon > $troopFirstBalloon and GUICtrlRead($txtNumBalloon) <> "0" then
-=======
 			if $troopSecondBalloon > $troopFirstBalloon and GUICtrlRead($txtNumBalloons) <> "0" then
->>>>>>> origin/master
 			   $ArmyComp += ($troopSecondBalloon - $troopFirstBalloon)*5
 			   $CurBalloon -= ($troopSecondBalloon - $troopFirstBalloon)
 			endif
