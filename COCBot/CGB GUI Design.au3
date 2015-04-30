@@ -20,7 +20,7 @@ $tabMain = GUICtrlCreateTab(35, 85, 450, 395, BitOR($TCS_MULTILINE, $TCS_BUTTONS
 Local $btnColor = False
 
 ;~ Buttons
-$grpButtons = GUICtrlCreateGroup("", 10, 490, 190, 85)
+$grpButtons = GUICtrlCreateGroup("", 10, 490, 260, 85)
 Local $x = 15, $y = 500
 	$btnStart = GUICtrlCreateButton("Start Bot", $x, $y + 2, 90, 40)
 		GUICtrlSetOnEvent(-1, "btnStart")
@@ -41,18 +41,28 @@ Local $x = 15, $y = 500
 		GUICtrlSetOnEvent(-1, "btnResume")
 		IF $btnColor then GUICtrlSetBkColor(-1,  0xFFA500)
 		GUICtrlSetState(-1, $GUI_HIDE)
-	$btnHide = GUICtrlCreateButton("Hide BS", $x + 10, $y + 45, 70, -1)
+	;$btnHide = GUICtrlCreateButton("Hide BS", $x + 10, $y + 45, 70, -1)
+	$btnHide = GUICtrlCreateButton("Hide BS", $x + 180, -1, 70, 40)
 		$txtTip = "Use this to move the BlueStacks Window out of sight." & @CRLF & "(Not minimized, but hidden)"
 		GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetOnEvent(-1, "btnHide")
 		IF $btnColor Then GUICtrlSetBkColor(-1, 0x22C4F5)
 		GUICtrlSetState(-1, $GUI_DISABLE)
-	$chkBackground = GUICtrlCreateCheckbox("Background" & @CRLF & "Mode", $x + 100, $y + 48, 70, 20, BITOR($BS_MULTILINE, $BS_CENTER))
+	;$chkBackground = GUICtrlCreateCheckbox("Background" & @CRLF & "Mode", $x + 100, $y + 48, 70, 20, BITOR($BS_MULTILINE, $BS_CENTER))
+	$chkBackground = GUICtrlCreateCheckbox("Background" & @CRLF & "Mode", $x + 181, $y + 48, 70, 20, BITOR($BS_MULTILINE, $BS_CENTER))
 		$txtTip = "Check this to ENABLE the Background Mode of the Bot." & @CRLF & "With this you can also hide the BlueStacks window out of sight."
 		GUICtrlSetFont(-1, 7)
 		GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetOnEvent(-1, "chkBackground")
-		GUICtrlSetState(-1, $GUI_UNCHECKED)
+		;GUICtrlSetState(-1, $GUI_UNCHECKED)
+		GUICtrlSetState(-1, $GUI_CHECKED)
+    ;Attack Now MOD
+    $btnAtkNow = GUICtrlCreateButton("ATTACK NOW", $x, $y + 45, 180, -1)
+	    $txtTip = "Use this to FORCE ATTACK when searching village to raid." & @CRLF & "(Delay base on village search delay)"
+		GUICtrlSetTip(-1, $txtTip)
+		GUICtrlSetOnEvent(-1, "btnAtkNow")
+	    GUICtrlSetState(-1, $GUI_HIDE)
+		GUICtrlSetState(-1, $GUI_DISABLE)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 #cs
@@ -602,7 +612,7 @@ $tabTroops = GUICtrlCreateTabItem("  Troops  ")
 			TrayTip("GameBot.org", "Stay Informed Of New Releases" & @CRLF & "http://gamebot.org/latest", 100)
 			GUICtrlSetTip(-1, "Set the type of Army composition." & @CRLF & "'Use Barracks Mode' or 'Custom Army' is for manual compositions.")
 			GUICtrlSetOnEvent(-1, "cmbTroopComp")
-			GUICtrlSetData(-1, "Preset: Archers|Preset: Barbarians|Preset: Goblins|Preset: B.Arch|Preset: B.A.G.G.|Preset: B.A.Giant|Preset: B.A.Goblin|Preset: B.A.G.G.Wall|Use Barrack Mode|Custom Army", "Custom Army")
+			GUICtrlSetData(-1, "Preset: Archers|Preset: Barbarians|Preset: Goblins|Preset: B.Arch|Preset: B.A.G.G.|Preset: B.A.Giant|Preset: B.A.Goblin|Preset: B.A.G.G.Wall|Use Barrack Mode|Custom Army", "Use Barrack Mode")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	$x += 227
@@ -702,8 +712,8 @@ $tabTroops = GUICtrlCreateTabItem("  Troops  ")
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		 $y +=22
 		GUICtrlCreatePic (@ScriptDir & "\Icons\Balloon.jpg", $x, $y - 3, 20, 20)
-		$lblBalloon = GUICtrlCreateLabel("No. of Balloons:", $x + 25, $y, -1, -1)
-		$txtNumBalloon = GUICtrlCreateInput("0", $x + 130, $y - 5, 55, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
+		$lblBalloons = GUICtrlCreateLabel("No. of Balloons:", $x + 25, $y, -1, -1)
+		$txtNumBalloons = GUICtrlCreateInput("0", $x + 130, $y - 5, 55, -1, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER))
 			GUICtrlSetTip(-1, "Enter the No. of Balloons to make.")
 			GUICtrlSetLimit(-1, 3)
 		 GUICtrlSetState(-1, $GUI_DISABLE)

@@ -71,6 +71,7 @@ If $OptBullyMode = 1 Then SETLOG("THBully Combo @" & $ATBullyMode & " SearchCoun
 
 	$SearchCount = 0
 	While 1
+		GUICtrlSetState($btnAtkNow, $GUI_ENABLE) ;Activated Attack Now Button before village search delay
 		If _Sleep(1000 * $iVSDelay) Then Return
 		GetResources() ;Reads Resource Values
 		If $Restart = True Then Return ; exit func
@@ -79,6 +80,14 @@ If $OptBullyMode = 1 Then SETLOG("THBully Combo @" & $ATBullyMode & " SearchCoun
 			_WinAPI_EmptyWorkingSet(WinGetProcess($Title)) ; reduce BS memory
 			If _Sleep(1000) Then Return
 			If CheckZoomOut() = False Then Return
+	    EndIf
+
+		;Attack Now MOD, Attack instantly if Attack Now button pressed
+	    GUICtrlSetState($btnAtkNow, $GUI_DISABLE)
+		If $AttackNow Then
+			$AttackNow = False
+			SetLog(_PadStringCenter(" Attack Now Clicked! ", 50, "~"), $COLOR_RED)
+			ExitLoop
 		EndIf
 
 		If CompareResources() Then

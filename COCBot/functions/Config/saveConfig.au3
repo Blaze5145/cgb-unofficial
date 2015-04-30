@@ -252,7 +252,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "troop", "giant", GUICtrlRead($txtNumGiants))
 	IniWrite($config, "troop", "WB", GUICtrlRead($txtNumWallbreakers))
 	IniWrite($config, "troop", "wizard", GUICtrlRead($txtNumWizards))
-	IniWrite($config, "troop", "balloon", GUICtrlRead($txtNumBalloon))
+	IniWrite($config, "troop", "balloon", GUICtrlRead($txtNumBalloons))
 	IniWrite($config, "troop", "minion", GUICtrlRead($txtNumMinions))
 	IniWrite($config, "troop", "hog", GUICtrlRead($txtNumHogs))
 	IniWrite($config, "troop", "troop1", _GUICtrlComboBox_GetCurSel($cmbBarrack1))
