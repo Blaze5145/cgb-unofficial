@@ -10,7 +10,7 @@ Func RequestCC()
 			Click($CCPos[0], $CCPos[1])
 			If _Sleep(1000) Then ExitLoop
 			_CaptureRegion()
-			$RequestTroop = _PixelSearch(310, 580, 553, 622, Hex(0x608C90, 6), 10)
+			$RequestTroop = _PixelSearch(310, 590, 553, 600, Hex(0x5C8E93, 6), 10)
 			If IsArray($RequestTroop) Then
 				Click($RequestTroop[0], $RequestTroop[1])
 				If _Sleep(1000) Then ExitLoop
