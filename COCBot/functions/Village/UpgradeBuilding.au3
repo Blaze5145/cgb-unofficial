@@ -122,8 +122,8 @@ Func UpgradeNormal($inum)
     Click($aUpgrades[$inum][0], $aUpgrades[$inum][1])  ; Select the item to be upgrade
     If _Sleep(800) Then Return  ; Wait for window to open
 
-    Local $aoffColors[2][3] = [[0x854833, 35, 33], [0x2B2D1F, 76, 0]] ; 2nd pixel brown hammer, 4th pixel edge of button
-    Global $ButtonPixel = _MultiPixelSearch(240, 563, 670, 616, 1, 1, Hex(0xF2F6F5, 6), $aoffColors, 30) ; first white pixel of button
+    Local $aoffColors[3][3] = [[0xD6714B, 47, 37], [0xF0E850, 70, 0], [0xF4F8F2, 79, 0]] ; 2nd pixel brown hammer, 3rd pixel gold, 4th pixel edge of button
+    Global $ButtonPixel = _MultiPixelSearch(240, 563, 670, 650, 1, 1, Hex(0xF3F3F1, 6), $aoffColors, 30) ; first white pixel of button
 
     If IsArray($ButtonPixel) Then
         SetLog("-$ButtonPixel =  " & "(" & $ButtonPixel[0] & "," & $ButtonPixel[1] & ")", $COLOR_PURPLE) ;Debug
