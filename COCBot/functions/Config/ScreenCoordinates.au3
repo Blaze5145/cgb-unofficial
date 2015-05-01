@@ -1,3 +1,19 @@
+#cs
+This file is part of ClashGameBot.
+
+ClashGameBot is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ClashGameBot is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with ClashGameBot.  If not, see <http://www.gnu.org/licenses/>.
+#ce
 ;                          x    y     color  tolerance
 Global $IsMain[4]         = [284,  28, 0x41B1CD, 20] ; origin: [284,  28, 0x41B1CD, 20]
 Global $IsMainGrayed[4]   = [284,  28, 0x215B69, 20] ; origin: [284,  28, 0x41B1CD, 20]
@@ -37,7 +53,7 @@ Global $TrainGiant[4]  = [ 475, 366, 0x3DD8E0,     20] ;
 Global $TrainWizard[4]  = [ 325, 425, 0xA56052,     20] ;
 Global $TrainGoblin[4]  = [ 581, 366, 0x39D8E0,     20] ;
 Global $TrainWallbreaker[4]=[ 688, 366, 0x3AD8E0,     20] ;
-Global $TrainDarkHog[4]=[ 369, 366, 0x39CBDA,     20] 
+Global $TrainDarkHog[4]=[ 369, 366, 0x39CBDA,     20]
 Global $TrainDarkMinion[4]=[ 225, 324, 0x4E91B0,     20]
 Global $TrainBalloon[4]=[ 218, 400, 0x701C10,     20]
 
