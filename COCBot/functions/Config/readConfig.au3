@@ -154,6 +154,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$PushBulletToken = IniRead($config, "PushBullet", "PushBulletToken", "")
 		$PushBulletVillageReport = IniRead($config, "PushBullet", "PushBulletVillageReport", "0")
 		$PushBulletMatchFound = IniRead($config, "PushBullet", "PushBulletMatchFound", "0")
+		$PushBulletLastAttack = IniRead($config, "PushBullet", "PushBulletLastAttack", "0")
 
 		;Upgrade Settings--------------------------------------------------------------------------
 		$itxtUpgrMinGold = IniRead($config, "upgrade", "minupgrgold", "0")

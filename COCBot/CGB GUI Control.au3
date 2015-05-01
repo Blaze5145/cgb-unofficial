@@ -1013,11 +1013,13 @@ Func chkPushBulletEnabled()
 	If GUICtrlRead($chkPushBulletEnabled) = $GUI_CHECKED Then
 		GUICtrlSetState($chkPushVillageReport, $GUI_ENABLE)
 		GUICtrlSetState($chkPushMatchFound, $GUI_ENABLE)
+		GUICtrlSetState($chkPushLastAttack,$GUI_ENABLE)
 
 		GUICtrlSetState($txtPushBulletToken, $GUI_ENABLE)
 	Else
 		GUICtrlSetState($chkPushVillageReport, $GUI_DISABLE)
 		GUICtrlSetState($chkPushMatchFound, $GUI_DISABLE)
+		GUICtrlSetState($chkPushLastAttack,$GUI_DISABLE)
 
 		GUICtrlSetState($txtPushBulletToken, $GUI_DISABLE)
 	EndIf

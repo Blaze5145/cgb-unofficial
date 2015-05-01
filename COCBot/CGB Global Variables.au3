@@ -322,3 +322,4 @@ Global $PushBulletEnabled = 0
 Global $PushBulletToken = ""
 Global $PushBulletVillageReport = 0
 Global $PushBulletMatchFound = 0
+Global $PushBulletLastAttack =0

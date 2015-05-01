@@ -359,6 +359,11 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 		GUICtrlSetState($chkPushMatchFound, $GUI_UNCHECKED)
 	EndIf
 
+	If $PushBulletLastAttack = 1 Then
+		GUICtrlSetState($chkPushLastAttack, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkPushLastAttack, $GUI_UNCHECKED)
+	EndIf
 	;Upgrade Settings--------------------------------------------------------------------------
 	GUICtrlSetData($txtUpgrMinGold, $itxtUpgrMinGold)
 	GUICtrlSetData($txtUpgrMinElixir, $itxtUpgrMinElixir)

@@ -338,6 +338,12 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "PushBullet", "PushBulletMatchFound", 0)
     EndIf
 
+	If GUICtrlRead($chkPushLastAttack) = $GUI_CHECKED Then
+		IniWrite($config, "PushBullet", "PushBulletLastAttack", 1)
+	Else
+		IniWrite($config, "PushBullet", "PushBulletLastAttack", 0)
+    EndIf
+
 	;Upgrade Settings--------------------------------------------------------------------------
 	IniWrite($config, "upgrade", "minupgrgold", GUICtrlRead($txtUpgrMinGold))
 	IniWrite($config, "upgrade", "minupgrelixir", GUICtrlRead($txtUpgrMinElixir))

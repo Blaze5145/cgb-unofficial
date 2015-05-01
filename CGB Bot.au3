@@ -16,10 +16,11 @@ $sBotVersion = "v2.0"
 $sBotTitle = "Clash Game Bot " & $sBotVersion
 Global $sBotDll = @ScriptDir & "\CGBPlugin.dll"
 
+
 If _Singleton($sBotTitle, 1) = 0 Then
 	MsgBox(0, "", "Bot is already running.")
 	Exit
- EndIf
+EndIf
 
 local $sIntro = @ScriptDir & "\Icons\intro.gif"
 local $aGIFDimension = _GIF_GetDimension($sIntro)
@@ -100,6 +101,9 @@ Func runBot() ;Bot that runs everything in order
 			VillageReport()
 				If GUICtrlRead($chkPushBulletEnabled) = $GUI_CHECKED And GUICtrlRead($txtPushBulletToken) <> "" And GUICtrlRead($chkPushVillageReport) = $GUI_CHECKED Then
 				   _Push("PushBot Village Report", "Start [G]: " & $GoldStart & ", [E]: " & $ElixirStart & ", [D]: " & $DarkStart & "\nNow [G]: " & $GoldVillage & ", [E]: " & $ElixirVillage & ", [D]: " & $DarkVillage & "\nStart [T]: " & $TrophyStart & "\nNow [T]: " & $TrophyVillage & "\n[GEM]: " & $GemCount & "\n[No. of Free Builders]: " & $FreeBuilder & "\n[No. of Wall Up]: G:" & $wallgoldmake & "/E:" & $wallelixirmake)
+				EndIf
+				If GUICtrlRead($chkPushBulletEnabled) = $GUI_CHECKED And GUICtrlRead($txtPushBulletToken) <> "" And GUICtrlRead($chkPushLastAttack) = $GUI_CHECKED Then
+				   _Push("PushBot Last Attack Report", "[G]: " & $GoldLast & ", [E]: " & $ElixirLast & ", [D]: " & $DarkLast & "\n[T]: " & $TrophyLast)
 				EndIf
 				If _Sleep(1000) Then Return
 				checkMainScreen(False)
