@@ -809,6 +809,13 @@ Func chkBackground()
 	EndIf
 EndFunc   ;==>chkBackground
 
+Func chkLightSpell()
+	If GUICtrlRead($chkLightSpell) = $GUI_CHECKED Then
+		GUICtrlSetState($txtMinDarkStorage, $GUI_ENABLE)
+	Else
+		GUICtrlSetState($txtMinDarkStorage, $GUI_DISABLE)
+	EndIf
+EndFunc
 
 Func chkBullyMode()
 	If GUICtrlRead($chkBullyMode) = $GUI_CHECKED Then

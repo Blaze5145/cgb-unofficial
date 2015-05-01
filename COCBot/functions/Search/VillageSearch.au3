@@ -1,18 +1,18 @@
 #cs
-This file is part of ClashGameBot.
+	This file is part of ClashGameBot.
 
-ClashGameBot is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+	ClashGameBot is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
 
-ClashGameBot is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+	ClashGameBot is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with ClashGameBot.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with ClashGameBot.  If not, see <http://www.gnu.org/licenses/>.
 #ce
 
 ;Searches for a village that until meets conditions
@@ -74,7 +74,7 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		EndIf
 
 		$GoldorElixirTHB = GUICtrlRead($txtGoldorElixirTHB)
-If $OptBullyMode = 1 Then SETLOG("THBully Combo @" & $ATBullyMode & " SearchCount, " & $YourTHText & " , G/E : " &  $GoldorElixirTHB)
+		If $OptBullyMode = 1 Then SETLOG("THBully Combo @" & $ATBullyMode & " SearchCount, " & $YourTHText & " , G/E : " & $GoldorElixirTHB)
 
 		If $chkATH = 1 Then $chkATHText = "AttackTH"
 		If $chkATH = 1 And $AttackTHType = 0 Then $AttackTHTypeText = ", Barch"
@@ -97,10 +97,10 @@ If $OptBullyMode = 1 Then SETLOG("THBully Combo @" & $ATBullyMode & " SearchCoun
 			_WinAPI_EmptyWorkingSet(WinGetProcess($Title)) ; reduce BS memory
 			If _Sleep(1000) Then Return
 			If CheckZoomOut() = False Then Return
-	    EndIf
+		EndIf
 
 		;Attack Now MOD, Attack instantly if Attack Now button pressed
-	    GUICtrlSetState($btnAtkNow, $GUI_DISABLE)
+		GUICtrlSetState($btnAtkNow, $GUI_DISABLE)
 		If $AttackNow Then
 			$AttackNow = False
 			SetLog(_PadStringCenter(" Attack Now Clicked! ", 50, "~"), $COLOR_RED)
@@ -112,10 +112,10 @@ If $OptBullyMode = 1 Then SETLOG("THBully Combo @" & $ATBullyMode & " SearchCoun
 				If checkDeadBase() Then
 					SetLog(_PadStringCenter(" Dead Base Found! ", 50, "~"), $COLOR_GREEN)
 					ExitLoop
-				ElseIf $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode)  Then
-                    If $SearchTHLResult = 1 And ((Number($searchGold) >= Number($GoldorElixirTHB)) or (Number($searchElixir) >= Number($GoldorElixirTHB))) Then
-                     SetLog(_PadStringCenter(" Not a Dead Base, but TH Bully Level Found ! ", 50, "~"), $COLOR_GREEN)
-                    ExitLoop
+				ElseIf $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
+					If $SearchTHLResult = 1 And ((Number($searchGold) >= Number($GoldorElixirTHB)) Or (Number($searchElixir) >= Number($GoldorElixirTHB))) Then
+						SetLog(_PadStringCenter(" Not a Dead Base, but TH Bully Level Found ! ", 50, "~"), $COLOR_GREEN)
+						ExitLoop
 					Else
 						If _Sleep(1000) Then ExitLoop (2)
 						SetLog(_PadStringCenter(" Not a Dead Base, Not TH Bully Level, Skipping ", 50, "~"), $COLOR_ORANGE)
@@ -167,8 +167,8 @@ If $OptBullyMode = 1 Then SETLOG("THBully Combo @" & $ATBullyMode & " SearchCoun
 	WEnd
 
 	If GUICtrlRead($chkPushBulletEnabled) = $GUI_CHECKED And GUICtrlRead($txtPushBulletToken) <> "" And GUICtrlRead($chkPushMatchFound) = $GUI_CHECKED Then
-	    _Push("PushBot Match Found", "[G]: " & $searchGold & ", [E]: " & $searchElixir & ", [D]: " & $searchDark & ", [T]: " & $searchTrophy & ", Skipped: " & $iSkipped)
-    EndIf
+		_Push("PushBot Match Found", "[G]: " & $searchGold & ", [E]: " & $searchElixir & ", [D]: " & $searchDark & ", [T]: " & $searchTrophy & ", Skipped: " & $iSkipped)
+	EndIf
 
 	If GUICtrlRead($chkAlertSearch) = $GUI_CHECKED Then
 		TrayTip("Match Found!", "Gold: " & $searchGold & "; Elixir: " & $searchElixir & "; Dark: " & $searchDark & "; Trophy: " & $searchTrophy, "", 0)

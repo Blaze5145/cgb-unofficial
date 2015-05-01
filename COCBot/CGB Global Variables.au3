@@ -133,7 +133,8 @@ Global $OptTrophyMode
 Global $ATBullyMode
 Global $YourTH
 Global $AttackTHType
-Global $chklighspell
+;Global $chklighspell
+Global $DELightSpell=0 ;DE Zapping MOD
 Global $TrainSpecial=1 ;0=Only trains after atk. Setting is automatic
 Global $cBarbarian=0,$cArcher=0,$cGoblin=0,$cGiant=0,$cWallbreaker=0,$cWizard=0,$cBalloon=0,$cDragon=0,$cPekka=0,$cMinion=0,$cHogs=0,$cValkyrie=0,$cGolem=0,$cWitch=0
 ;Troop types
@@ -181,6 +182,13 @@ Global $King, $Queen, $CC, $Barb, $Arch
 Global $LeftTHx, $RightTHx, $BottomTHy, $TopTHy
 Global $AtkTroopTH
 Global $GetTHLoc
+
+;DE Zapping MOD
+Global $SpellMinDarkStorage = 250
+Global $DELocation, $DElixx = 0, $DElixy = 0
+Global $LSpell
+Global $CreateSpell = True
+Global $castSpell = 0
 
 ;Boosts Settings
 Global $remainingBoosts = 0 ;  remaining boost to active during session

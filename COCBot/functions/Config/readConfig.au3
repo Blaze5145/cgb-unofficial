@@ -102,6 +102,8 @@ Func readConfig() ;Reads config and sets it to the variables
 		;atk their king
 		;atk their queen
 		;hit de with lightning spell
+		$DELightSpell = IniRead($config, "advanced", "DELightSpell", "0")
+		$SpellMinDarkStorage = IniRead($config, "advanced", "txtMinDarkStorage", "250")
 
 		;Donate Settings-------------------------------------------------------------------------
 		$icmbMaxDonations = IniRead($config, "donate", "MaxDonations", "0")
