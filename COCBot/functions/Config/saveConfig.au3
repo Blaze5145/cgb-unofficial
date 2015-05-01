@@ -49,6 +49,15 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "search", "mode", 2)
 	EndIf
 
+	If GUICtrlRead($chkAllTownsSnapshot) = $GUI_CHECKED	Then
+		IniWrite($config, "search", "AllTownsSnapshot", 1)
+	Else
+		IniWrite($config, "search", "AllTownsSnapshot", 0)
+	Endif
+	IniWrite($config, "search", "AllTownsSnapshotMinGold", GUICtrlRead($txtAllTownsSnapshotMinGold))
+	IniWrite($config, "search", "AllTownsSnapshotMinElixir", GUICtrlRead($txtAllTownsSnapshotMinElixir))
+	IniWrite($config, "search", "AllTownsSnapshotAndOr", _GUICtrlComboBox_GetCurSel($cmbAllTownsSnapshotAndOr))
+
 	If GUICtrlRead($chkSearchReduction) = $GUI_CHECKED Then
 		IniWrite($config, "search", "reduction", 1)
 	Else

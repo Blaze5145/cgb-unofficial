@@ -176,6 +176,33 @@ $tabSearch = GUICtrlCreateTabItem("   Search   ")
 			$txtTip = "Search for a Base that meets all search conditions."
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_CHECKED)
+
+		$y += 27
+		$chkAllTownsSnapshot = GUICtrlCreateCheckbox("Take all Towns snaphot if", $x, $y, -1, -1)
+			GUICtrlSetOnEvent(-1, "chkAllTownsSnapshot")
+			$txtTip = "Take snapshot of Base if there more Gold and/or Elixir than values. Useful for debugging missed bases."
+			GUICtrlSetTip(-1, $txtTip)
+
+		$x += 161
+		$lblAllTownsSnapshotGoldMore = GUICtrlCreateLabel("Gold >", $x, $y + 5, -1, -1)
+		$x += 34;
+		$txtAllTownsSnapshotMinGold = GUICtrlCreateInput("240000", $x, $y, 61, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 6)
+			;GUICtrlSetState(-1, $GUI_DISABLE)
+		$x += 76
+		$cmbAllTownsSnapshotAndOr = GUICtrlCreateCombo("", $x, $y, 44, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetData(-1, "or|and", "or")
+			;GUICtrlSetState(-1, $GUI_DISABLE)
+		$x += 50
+		$lblAllTownsSnapshotElixirMore = GUICtrlCreateLabel("Elixir >", $x, $y + 5, -1, -1)
+		$x += 33;
+			$txtAllTownsSnapshotMinElixir = GUICtrlCreateInput("240000", $x, $y, 61, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 6)
+			;GUICtrlSetState(-1, $GUI_DISABLE)
+
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 	Local $x = 150, $y = 160

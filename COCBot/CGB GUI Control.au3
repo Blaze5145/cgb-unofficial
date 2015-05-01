@@ -763,6 +763,18 @@ Func chkSearchReduction()
 	EndIf
 EndFunc
 
+Func chkAllTownsSnapshot()
+	If GUICtrlRead($chkAllTownsSnapshot) = $GUI_CHECKED Then
+		_GUICtrlEdit_SetReadOnly($txtAllTownsSnapshotMinGold, False)
+		GUICtrlSetState($cmbAllTownsSnapshotAndOr, $GUI_ENABLE)
+		_GUICtrlEdit_SetReadOnly($txtAllTownsSnapshotMinElixir, False)
+	Else
+		_GUICtrlEdit_SetReadOnly($txtAllTownsSnapshotMinGold, True)
+		GUICtrlSetState($cmbAllTownsSnapshotAndOr, $GUI_DISABLE)
+		_GUICtrlEdit_SetReadOnly($txtAllTownsSnapshotMinElixir, True)
+	EndIf
+EndFunc
+
 Func chkMeetDE()
 	If GUICtrlRead($chkMeetDE) = $GUI_CHECKED Then
 		_GUICtrlEdit_SetReadOnly($txtMinDarkElixir, False)
