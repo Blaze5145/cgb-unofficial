@@ -30,7 +30,6 @@ Func UpgradeIt4()
     Local $iUpgradeAction = -1
     Local $iMinDark = 2000 ;Reserve enough to make war troops?
 
-    Setlog("LAZYMANV2 MOD, upgrade time!", $COLOR_BLUE)
 
 ; check to see if anything is enabled before wasting time.
     For $iz = 0 to 3
@@ -40,6 +39,8 @@ Func UpgradeIt4()
    Next
    If $iUpgradeAction < 0 then Return False
    $iUpgradeAction = -1  ; Reset action
+
+   Setlog("LAZYMANV2 MOD, upgrade time!", $COLOR_BLUE)
 
     ; Need to update village report function to skip statistics and extra messages not required using a bypass?
     VillageReport(True)  ; Get current loot available after training troops and update free builder status

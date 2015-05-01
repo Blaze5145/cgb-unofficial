@@ -217,6 +217,14 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	;attk their king
 	;attk their queen
 	;hit de with lightning spell
+	If $DELightSpell = 1 Then
+		GUICtrlSetState($chkLightSpell, $GUI_CHECKED)
+	ElseIf $DELightSpell = 0 Then
+		GUICtrlSetState($chkLightSpell, $GUI_UNCHECKED)
+    EndIf
+
+	GUICtrlSetData($txtMinDarkStorage, $SpellMinDarkStorage)
+	chkLightSpell()
 
 	;Donate Settings-------------------------------------------------------------------------
 	_GUICtrlComboBox_SetCurSel($cmbMaxDonations, $icmbMaxDonations)

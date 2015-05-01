@@ -204,6 +204,13 @@ Func saveConfig() ;Saves the controls settings to the config
 	;atk their king
 	;attk their queen
 	;hit de with lightning spell
+	If GUICtrlRead($chkLightSpell) = $GUI_CHECKED Then
+		IniWrite($config, "advanced", "DELightSpell", 1)
+	Else
+		IniWrite($config, "advanced", "DELightSpell", 0)
+    EndIf
+
+	IniWrite($config, "advanced", "txtMinDarkStorage", GUICtrlRead($txtMinDarkStorage))
 
 	;Donate Settings-------------------------------------------------------------------------
 	IniWrite($config, "donate", "MaxDonations", _GUICtrlComboBox_GetCurSel($cmbMaxDonations))
@@ -328,7 +335,7 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "other", "yBarrack", $barrackPos[1])
 	;Next
 
-	If GUICtrlRead($chklighspell) = $GUI_CHECKED Then
+	If GUICtrlRead($chkLightSpell) = $GUI_CHECKED Then
 		IniWrite($config, "other", "xSpellfactory", $SFPos[0])
 		IniWrite($config, "other", "ySpellfactory", $SFPos[1])
 	EndIf

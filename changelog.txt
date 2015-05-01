@@ -1,3 +1,17 @@
+01-05-2015:
+Bug Fixed:
+1)CC request by scarface008
+2)Wall upgrade by scarface008
+3)Building upgrade by scarface008
+Mods:
+1)PushBullet Last Attack Stats
+2)DE Zapping by IndraFer
+30-04-2015:
+Bug Fixed:
+1)Barracks not recognised after update by scarface008
+2)Display of 'Finished kicking' by IndraFer
+Mods:
+1)Russian Character Recognition by weather
 29-04-2015:
 Bug Fixed:
 1)PushBullet function call
@@ -5,7 +19,7 @@ Bug Fixed:
 3)Runtime display
 4)CC detection by Boju PR by shariqriaz
 Mods:
-1)Pushbullet GUI by IndraFer
+1)Pushbullet GUI by IndraFer8
 2)Out of Sync count by cocmady
 28-04-2015:
 Bug Fixed:

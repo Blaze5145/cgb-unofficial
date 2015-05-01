@@ -22,6 +22,7 @@ along with ClashGameBot.  If not, see <http://www.gnu.org/licenses/>.
 #include "functions\Attack\PrepareAttack.au3"
 #include "functions\Attack\ReturnHome.au3"
 #include "functions\Attack\TroopDeploy.au3"
+#include "functions\Attack\SpellDarkStorage.au3" ;DE Zapping MOD
 #include "functions\Attack\Attack Algorithms\algorithmTH.au3"
 #include "functions\Attack\Attack Algorithms\algorithm_AllTroops.au3"
 #include "functions\Attack\Attack Algorithms\algorithm_Barch.au3"
@@ -35,6 +36,7 @@ along with ClashGameBot.  If not, see <http://www.gnu.org/licenses/>.
 #include "functions\Image Search\checkDeadBase.au3"
 #include "functions\Image Search\checkTownhall.au3"
 #include "functions\Image Search\checkWall.au3"
+#include "functions\Image Search\checkDarkElix.au3" ;DE Zapping MOD
 
 #include "functions\Main Screen\checkMainScreen.au3"
 #include "functions\Main Screen\checkObstacles.au3"
@@ -59,6 +61,7 @@ along with ClashGameBot.  If not, see <http://www.gnu.org/licenses/>.
 #include "functions\Pixels\_GetPixelColor.au3"
 #include "functions\Pixels\_PixelSearch.au3"
 #include "functions\Pixels\_MultiPixelSearch.au3"
+#include "functions\Pixels\_WaitForPixel.au3" ;DE Zapping MOD
 #include "functions\Pixels\boolPixelSearch.au3"
 
 #include "functions\Read Text\getChar.au3"
