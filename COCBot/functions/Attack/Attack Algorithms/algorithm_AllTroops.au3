@@ -179,6 +179,11 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 		SetLog(" [" & UBound($PixelBottomRight) & "] pixels BottomRight")
 	EndIf
 
+	;DE Zapping MOD (will DE Zapping on first attack)
+	If GUICtrlRead($chkLightSpell) = $GUI_CHECKED And GUICtrlRead($txtMinDarkStorage) > 0 Then
+		 SpellDarkStorage()
+    EndIf
+
 	$King = -1
 	$Queen = -1
 	$CC = -1
@@ -301,10 +306,6 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 		If _Sleep(SetSleep(1)) Then Return
 	EndIf
 	; ================================================================================?
-    ;DE Zapping MOD (will DE Zapping before drop left over troops)
-	If GUICtrlRead($chkLightSpell) = $GUI_CHECKED And GUICtrlRead($txtMinDarkStorage) > 0 Then
-		 SpellDarkStorage()
-    EndIf
 
 	Local $RandomEdge = $Edges[Round(Random(0, 3))]
 	Local $RandomXY = Round(Random(0, 4))
