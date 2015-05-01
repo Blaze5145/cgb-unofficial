@@ -113,11 +113,11 @@ Func runBot() ;Bot that runs everything in order
 				checkMainScreen(False)
 				If $Restart = True Then ContinueLoop
 			DonateCC()
-
 			;"============================="
-			;If _Sleep(1000) Then Return
-			;	checkMainScreen(False)							;Create Spell
-			;	CreateSpell()
+			    If _Sleep(1000) Then Return
+				checkMainScreen(False)
+				If $Restart = True Then ContinueLoop
+			CreateSpell()
 			;==============================;
 				If _Sleep(1000) Then Return
 				checkMainScreen(False)
