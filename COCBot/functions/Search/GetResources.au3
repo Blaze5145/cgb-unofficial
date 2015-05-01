@@ -86,9 +86,24 @@ $THy = 0
 EndIf
 $THString = " [TH]:" & StringFormat("%2s", $searchTH) & ", " & $THLoc
 EndIf
+Local $Snapshot_name=''
+;saving base snapshot if needed
+If ($AllTownsSnapshot) Then
+	Local $sGold	=	Number(Number($searchGold)>Number($AllTownsSnapshotMinGold))
+	Local $sElixir  =	Number(Number($searchElixir)>Number($AllTownsSnapshotMinElixir))
+	If (($sGold + $sElixir)>$AllTownsSnapshotAndOr) Then
+		Local $Date = @YEAR & "-" & @MON & "-" & @MDAY
+		Local $Time = @HOUR & "-" & @MIN
+		$Snapshot_name= $Date & "_" & $Time & "_Gold-" & Number($searchGold) & "_Elixir-" & Number($searchElixir) & "_.png"
+		_CaptureRegion()
+		_GDIPlus_ImageSaveToFile ( $hBitmap, $dirAllTowns & $Snapshot_name )
+		$Snapshot_name =", Snapshot in " & $Snapshot_name
+	EndIf
+EndIf
 
 $SearchCount += 1 ; Counter for number of searches
-SetLog(StringFormat("%3s", $SearchCount) & "> [G]:" & StringFormat("%7s", $searchGold) & " [E]:" & StringFormat("%7s", $searchElixir) & " [D]:" & StringFormat("%5s", $searchDark) & " [T]:" & StringFormat("%2s", $searchTrophy) & $THString, $COLOR_BLACK, "Lucida Console", 7.5)
-   ExitLoop
+SetLog(StringFormat("%3s", $SearchCount) & "> [G]:" & StringFormat("%7s", $searchGold) & " [E]:" & StringFormat("%7s", $searchElixir) & " [D]:" & StringFormat("%5s", $searchDark) & " [T]:" & StringFormat("%2s", $searchTrophy) & $THString & $Snapshot_name, $COLOR_BLACK, "Lucida Console", 7.5)
+
+ExitLoop
 WEnd
 EndFunc   ;==>GetResources

@@ -1,4 +1,4 @@
-#cs
+﻿#cs
 This file is part of ClashGameBot.
 
 ClashGameBot is free software: you can redistribute it and/or modify

@@ -62,7 +62,7 @@ Global $HWnD = WinGetHandle($Title) ;Handle for Bluestacks window
 Global $config = @ScriptDir & "\config.ini"
 Global $dirLogs = @ScriptDir & "\logs\"
 Global $dirLoots = @ScriptDir & "\Loots\"
-;~ Global $dirAllTowns = @ScriptDir & "\AllTowns\"
+Global $dirAllTowns = @ScriptDir & "\AllTowns\"
 Global $sLogPath ; `Will create a new log file every time the start button is pressed
 Global $hLogFileHandle
 Global $Restart = False
@@ -111,6 +111,7 @@ Global $searchGold, $searchElixir, $searchDark, $searchTrophy, $searchTH ;Resour
 Global $SearchGold2=0, $SearchElixir2=0, $iStuck=0, $iNext=0
 Global $MinGold, $MinElixir, $MinDark, $MinTrophy, $MaxTH , $GoldorElixirTHB; Minimum Resources conditions
 Global $AimGold, $AimElixir, $AimDark, $AimTrophy, $AimTHtext ; Aiming Resource values
+Global $AllTownsSnapshot,$AllTownsSnapshotMinGold,$AllTownsSnapshotMinElixir,$AllTownsSnapshotAndOr ;Take snapshot of all towns with min Gold and/or Elixir
 Global $iChkSearchReduction
 Global $ReduceCount, $ReduceGold, $ReduceElixir, $ReduceDark, $ReduceTrophy ; Reducing values
 Global $chkConditions[6], $ichkMeetOne ;Conditions (meet gold...)

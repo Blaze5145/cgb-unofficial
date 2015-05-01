@@ -49,6 +49,21 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 			GUICtrlSetState($radAllBases, $GUI_CHECKED)
 	EndSwitch
 
+
+
+
+	If $AllTownsSnapshot = 1 Then
+		GUICtrlSetState($chkAllTownsSnapshot, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkAllTownsSnapshot, $GUI_UNCHECKED)
+	EndIf
+	chkAllTownsSnapshot()
+
+	GUICtrlSetData($txtAllTownsSnapshotMinGold, $AllTownsSnapshotMinGold)
+	GUICtrlSetData($txtAllTownsSnapshotMinElixir, $AllTownsSnapshotMinElixir)
+	_GUICtrlComboBox_SetCurSel($cmbAllTownsSnapshotAndOr,$AllTownsSnapshotAndOr)
+
+
 	If $iChkSearchReduction = 1 Then
 		GUICtrlSetState($chkSearchReduction, $GUI_CHECKED)
 	Else

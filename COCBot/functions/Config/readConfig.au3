@@ -32,6 +32,12 @@ Func readConfig() ;Reads config and sets it to the variables
 		;Search Settings------------------------------------------------------------------------
 		$iradAttackMode = IniRead($config, "search", "mode", "0")
 
+
+		$AllTownsSnapshot = IniRead($config, "search","AllTownsSnapshot", "0")
+		$AllTownsSnapshotMinGold = IniRead($config, "search","AllTownsSnapshotMinGold", "240000")
+		$AllTownsSnapshotMinElixir = IniRead($config, "search","AllTownsSnapshotMinElixir", "240000")
+		$AllTownsSnapshotAndOr = IniRead($config, "search","AllTownsSnapshotAndOr", "and")
+
 		$iChkSearchReduction = IniRead($config, "search", "reduction", "1")
 		$ReduceCount = IniRead($config, "search", "reduceCount", "20")
 		$ReduceGold = IniRead($config, "search", "reduceGold", "2000")
