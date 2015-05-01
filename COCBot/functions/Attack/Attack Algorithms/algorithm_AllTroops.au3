@@ -165,7 +165,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 	debugRedArea($nameFunc & " IN ")
 	debugRedArea($nameFunc & " ==========> DATE : [" & @YEAR & @MON & @MDAY & @HOUR & @MIN & @SEC & "] <==========")
 	debugRedArea("$chkRedArea : " & $chkRedArea)
-	If ($chkRedArea) Then
+	If ($chkRedArea = 1) Then
 		SetLog("==> Search red area <==")
 		Local $hTimer = TimerInit()
 		_WinAPI_DeleteObject($hBitmapFirst)
@@ -276,7 +276,7 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
 	$RandomEdge = $Edges[Round(Random(0, 3))]
 	Local $RandomXY = Round(Random(0, 4))
-	If ($chkRedArea) Then
+	If ($chkRedArea = 1) Then
 		Local $arrPixelDropHeroes = $PixelRedArea[Round(Random(0, 3))]
 		Local $pixelDropHeroes = $arrPixelDropHeroes[Round(Random(0, UBound($arrPixelDropHeroes) - 1))]
 		dropHeroes($pixelDropHeroes[0], $pixelDropHeroes[1], $King, $Queen)
@@ -1453,7 +1453,7 @@ Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0)
 	debugRedArea("troop : [" & $troop & "] / nbSides : [" & $nbSides & "] / number : [" & $number & "] / slotsPerEdge [" & $slotsPerEdge & "]")
 
 
-	If ($chkRedArea) Then
+	If ($chkRedArea = 1) Then
 
 		If $slotsPerEdge = 0 Or $number < $slotsPerEdge Then $slotsPerEdge = $number
 		If _Sleep(100) Then Return
