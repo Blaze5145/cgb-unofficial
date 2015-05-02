@@ -1,6 +1,6 @@
 
 Func CreateSpell()
-   If GUICtrlRead($chkLightSpell) = $GUI_CHECKED Or $CreateSpell = True Then
+   If GUICtrlRead($chkLightSpell) = $GUI_CHECKED And $CreateSpell = True Then
 	  SetLog("Create Lightning Spells...", $COLOR_BLUE)
 	  If $SFPos[0] = -1 Then
 		 LocateSpellFactory()
