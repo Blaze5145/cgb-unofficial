@@ -697,6 +697,15 @@ Func checkArmyCamp()
 			  ElseIf _ColorCheck($TroopKind, Hex(0x48A8E8, 6), 20) Then
 				 if ($CurWB=0 and $FirstStart) then $CurWB -= $TroopQ
 				 $TroopName = "Wallbreakers"
+			   ElseIf _ColorCheck($TroopKind, Hex(0x941D15, 6), 20) Then
+				 if ($CurBalloon=0 and $FirstStart) then $CurBalloon -= $TroopQ
+				 $TroopName = "Balloon"
+			  ElseIf _ColorCheck($TroopKind, Hex(0x882010, 6), 20) Then
+				 if ($CurBalloon=0 and $FirstStart) then $CurBalloon -= $TroopQ
+				 $TroopName = "Balloon"
+			  ElseIf _ColorCheck($TroopKind, Hex(0xC07870, 6), 20) Then
+				 if ($CurWizard=0 and $FirstStart) then $CurWizard -= $TroopQ
+				 $TroopName = "Wizards"
 			  ElseIf _ColorCheck($TroopKind, Hex(0x302018, 6), 20) Then
 				 if ($CurHog=0 and $FirstStart) then $CurHog -= $TroopQ
 				 $TroopName = "Hog Riders"
@@ -709,12 +718,6 @@ Func checkArmyCamp()
 			  ElseIf _ColorCheck($TroopKind, Hex(0x131D38, 6), 20) Then
 				 if ($CurMinion=0 and $FirstStart) then $CurMinion -= $TroopQ
 				 $TroopName = "Minions"
-			  ElseIf _ColorCheck($TroopKind, Hex(0xC07870, 6), 20) Then
-				 if ($CurWizard=0 and $FirstStart) then $CurWizard -= $TroopQ
-				 $TroopName = "Wizards"
-			   ElseIf _ColorCheck($TroopKind, Hex(0x941D15, 6), 20) Then
-				 if ($CurBalloon=0 and $FirstStart) then $CurBalloon -= $TroopQ
-				 $TroopName = "Balloon"
 			  EndIf
 			  ;656,359,0xBCBAAC   ---   6  --nothing
 			  If $TroopQ <> 0 Then SetLog(" - No. of " & $TroopName & ": " & $TroopQ)
