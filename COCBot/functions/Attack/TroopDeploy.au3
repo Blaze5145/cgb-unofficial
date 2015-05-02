@@ -96,6 +96,8 @@ Func IdentifyTroopKind($position)
 	EndIf
 	If _ColorCheck($TroopPixel, Hex(0x60A4D0, 6), 10) And _ColorCheck($WallBPixel, Hex(0x302A2A, 6), 10) Then Return $eWallbreaker ;Check if slot is Wallbreaker
 	If _ColorCheck($TroopPixel, Hex(0x4CA0D2, 6), 10) Then Return $eMinion
+	If _ColorCheck($TroopPixel, Hex(0x3C76B4, 6), 20) Then Return $eMinion
+	If _ColorCheck($TroopPixel, Hex(0x4392C9, 6), 20) Then Return $eMinion
 
 	;$OtherPixel = _GetPixelColor(68 + (72 * $position), 588)
 	;If _ColorCheck($OtherPixel, Hex(0x7031F0, 6), 20) Or _ColorCheck($TroopPixel, Hex(0x421E3F, 6), 20) Then Return $eQueen ;Check if slot is Queen <= level 10 Or Check if slot is Queen > level 10
