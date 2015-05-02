@@ -10,6 +10,7 @@ Func SpellDarkStorage()
 	Local $SDark
 	Local $LightPosition[11]
 	Local $LightSpell
+	Local $SpellTimeOut = 0
 
 	$SDark = getDarkElixir(51, 66 + 57)
 
@@ -33,6 +34,8 @@ Func SpellDarkStorage()
 		  If _Sleep(500) Then Return
 		  While _WaitForPixel(68 + (72 * $LSpell), 624, Hex(0x0848ED, 6), 5, 500, 500)
 			 Click($DElixx, $DElixy)
+			 $SpellTimeOut += 1
+			 If ($SpellTimeOut >= 10) Then ExitLoop
 		  WEnd
 		  $CreateSpell = True
 	   ElseIf ($SDark - $SpellMinDarkStorage <= -1 And $castSpell < 1) Then
